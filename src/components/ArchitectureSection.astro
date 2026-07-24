@@ -1,0 +1,142 @@
+---
+const pipelineSteps = [
+  {
+    step: '00',
+    title: 'Attacker',
+    description: 'SSH brute-force hits the monitored host',
+    isAttacker: true,
+    color: 'rose',
+  },
+  {
+    step: '01',
+    title: 'Wazuh Agent',
+    description: 'Detects activity on the endpoint in real time',
+    color: 'emerald',
+  },
+  {
+    step: '02',
+    title: 'Wazuh Manager',
+    description: 'Collects, correlates, raises a structured alert',
+    color: 'emerald',
+  },
+  {
+    step: '03',
+    title: 'Collector API',
+    description: 'Pulls and forwards alerts for ML scoring',
+    color: 'cyan',
+  },
+  {
+    step: '04',
+    title: 'AI Classifier',
+    description: 'Normalizes features and scores threat probability',
+    color: 'cyan',
+  },
+  {
+    step: '05',
+    title: 'Core + Postgres',
+    description: 'Stores findings, posture data, and history',
+    color: 'amber',
+  },
+  {
+    step: '06',
+    title: 'Grafana / TG',
+    description: 'Dashboards + instant Telegram alerts',
+    color: 'emerald',
+  },
+];
+---
+
+<section class="w-full max-w-7xl mx-auto px-4 py-16 lg:py-24 relative z-10">
+  <!-- Section Header -->
+  <div class="text-center max-w-3xl mx-auto mb-16">
+    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-mono text-xs font-semibold tracking-widest uppercase mb-4 glow-border-cyan">
+      <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
+      SYSTEM ARCHITECTURE
+    </div>
+    <h2 class="text-3xl md:text-4xl font-mono font-bold text-white mb-4 leading-tight">
+      From Raw Attack to Actionable Report
+    </h2>
+    <p class="text-slate-300 text-base md:text-lg leading-relaxed">
+      Seven stages, one continuous pipeline. Every SSH brute-force, anomaly, or policy violation flows through the same automated path.
+    </p>
+  </div>
+
+  <!-- Horizontal Timeline Pipeline (Responsive Grid / Flex Flow) -->
+  <div class="mb-14">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 relative">
+      {pipelineSteps.map((item, index) => (
+        <div class="glass-panel-interactive p-4 rounded-xl border border-slate-800/80 bg-cyber-card/40 backdrop-blur-xl relative flex flex-col justify-between group">
+          {/* Step Top Badge & Number */}
+          <div class="flex items-center justify-between mb-3">
+            {item.isAttacker ? (
+              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-rose-500/20 text-rose-400 border border-rose-500/40 text-[11px] font-mono font-bold">
+                <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+                ATTACKER
+              </span>
+            ) : (
+              <span class="font-mono text-xs font-bold text-slate-400 bg-slate-900/80 px-2 py-0.5 rounded border border-slate-800">
+                STEP {item.step}
+              </span>
+            )}
+
+            {/* Connecting Arrow for Desktop */}
+            {index < pipelineSteps.length - 1 && (
+              <span class="hidden lg:block text-slate-600 font-mono text-xs group-hover:text-cyan-400 group-hover:translate-x-1 transition-all">
+                →
+              </span>
+            )}
+          </div>
+
+          <!-- Step Title -->
+          <h3 class={`font-mono text-sm font-bold mb-2 ${item.isAttacker ? 'text-rose-400' : 'text-white group-hover:text-cyan-400'} transition-colors`}>
+            {item.title}
+          </h3>
+
+          <!-- Step Description -->
+          <p class="text-slate-400 text-xs leading-relaxed font-sans">
+            {item.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Bottom Execution Paths (2 Columns / Cards) -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+    <!-- Card 1: Fast Path -->
+    <div class="glass-panel-interactive p-6 md:p-8 rounded-2xl border border-emerald-500/30 bg-cyber-card/50 backdrop-blur-xl relative overflow-hidden glow-border-emerald">
+      <div class="flex items-center justify-between mb-4">
+        <span class="inline-flex items-center gap-2 font-mono text-xs font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-lg border border-emerald-500/30">
+          <span>⚡ FAST PATH</span>
+          <span class="text-slate-500">|</span>
+          <span>REAL-TIME SCORING</span>
+        </span>
+        <span class="font-mono text-xs text-emerald-400 font-semibold bg-emerald-950/60 px-2.5 py-1 rounded border border-emerald-500/20">
+          &lt; 150ms
+        </span>
+      </div>
+
+      <p class="text-slate-300 text-sm leading-relaxed font-mono bg-slate-950/80 p-4 rounded-xl border border-slate-800/80 text-emerald-300">
+        Alert <span class="text-slate-500">→</span> Normalize <span class="text-slate-500">→</span> Extract f1–f8 <span class="text-slate-500">→</span> ML Model <span class="text-slate-500">→</span> p-score <span class="text-slate-500">→</span> Allow / Alert / Redirect to Honeypot
+      </p>
+    </div>
+
+    <!-- Card 2: Deep Path -->
+    <div class="glass-panel-interactive p-6 md:p-8 rounded-2xl border border-amber-500/30 bg-cyber-card/50 backdrop-blur-xl relative overflow-hidden glow-border-amber">
+      <div class="flex items-center justify-between mb-4">
+        <span class="inline-flex items-center gap-2 font-mono text-xs font-bold text-amber-400 bg-amber-500/10 px-3 py-1.5 rounded-lg border border-amber-500/30">
+          <span>🔍 DEEP PATH</span>
+          <span class="text-slate-500">|</span>
+          <span>LLM INVESTIGATION</span>
+        </span>
+        <span class="font-mono text-xs text-amber-400 font-semibold bg-amber-950/60 px-2.5 py-1 rounded border border-amber-500/20">
+          ASYNC ANALYSIS
+        </span>
+      </div>
+
+      <p class="text-slate-300 text-sm leading-relaxed font-mono bg-slate-950/80 p-4 rounded-xl border border-slate-800/80 text-amber-300">
+        Alert <span class="text-slate-500">→</span> Query Wazuh API <span class="text-slate-500">→</span> Build full timeline <span class="text-slate-500">→</span> LLM drafts findings <span class="text-slate-500">→</span> PDF Report + Telegram to analyst
+      </p>
+    </div>
+  </div>
+</section>

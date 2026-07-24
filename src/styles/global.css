@@ -1,1 +1,144 @@
 @import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Fira Code', monospace;
+
+  /* Cyberpunk / SOC Theme Palette */
+  --color-cyber-dark: #080b10;
+  --color-cyber-card: #0f172a;
+  --color-cyber-panel: #0c1017;
+  --color-cyber-border: #1e293b;
+  --color-cyber-muted: #64748b;
+
+  --color-neon-emerald: #34d399;
+  --color-neon-cyan: #22d3ee;
+  --color-neon-amber: #fbbf24;
+  --color-neon-rose: #f43f5e;
+}
+
+/* Global Reset & Base Styles */
+@layer base {
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    background-color: var(--color-cyber-dark);
+  }
+
+  body {
+    background-color: var(--color-cyber-dark);
+    color: #e2e8f0;
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Cyberpunk Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #080b10;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 4px;
+    border: 1px solid rgba(52, 211, 153, 0.2);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #34d399;
+    box-shadow: 0 0 10px rgba(52, 211, 153, 0.5);
+  }
+}
+
+/* Custom Cyber-CLI Utility Classes */
+@layer utilities {
+  /* Glassmorphism Panels */
+  .glass-panel {
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(30, 41, 59, 0.8);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  .glass-panel-interactive {
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(30, 41, 59, 0.8);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-panel-interactive:hover {
+    border-color: rgba(52, 211, 153, 0.4);
+    box-shadow: 0 0 20px rgba(52, 211, 153, 0.15), 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    transform: translateY(-2px);
+  }
+
+  /* Neon Text Glows */
+  .glow-text-emerald {
+    text-shadow: 0 0 12px rgba(52, 211, 153, 0.5);
+  }
+
+  .glow-text-cyan {
+    text-shadow: 0 0 12px rgba(34, 211, 238, 0.5);
+  }
+
+  .glow-text-rose {
+    text-shadow: 0 0 12px rgba(244, 63, 94, 0.5);
+  }
+
+  /* Neon Border Glows */
+  .glow-border-emerald {
+    box-shadow: 0 0 15px rgba(52, 211, 153, 0.25), inset 0 0 15px rgba(52, 211, 153, 0.05);
+  }
+
+  .glow-border-cyan {
+    box-shadow: 0 0 15px rgba(34, 211, 238, 0.25), inset 0 0 15px rgba(34, 211, 238, 0.05);
+  }
+
+  .glow-border-rose {
+    box-shadow: 0 0 15px rgba(244, 63, 94, 0.25), inset 0 0 15px rgba(244, 63, 94, 0.05);
+  }
+
+  /* Terminal Scanline Overlay */
+  .scanline-bg {
+    background: linear-gradient(
+      to bottom,
+      rgba(255,255,255,0),
+      rgba(255,255,255,0) 50%,
+      rgba(0, 0, 0, 0.25) 50%,
+      rgba(0, 0, 0, 0.25)
+    );
+    background-size: 100% 4px;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(52, 211, 153, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(52, 211, 153, 0.5);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s infinite ease-in-out;
+}

@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import { MatrixRain } from '../components/MatrixRain';
+import { SandboxContainer } from '../components/SandboxContainer';
+import { GlobalAIChatWidget } from '../components/GlobalAIChatWidget';
+---
+
+<Layout title="LureGuard Sandbox — Interactive Attack & Defense Playground">
+	<!-- Matrix Background Canvas -->
+	<MatrixRain client:only="react" opacity={0.12} fps={30} />
+
+	<!-- Global AI Chat Widget -->
+	<GlobalAIChatWidget client:only="react" />
+
+	<div class="relative z-10 min-h-screen flex flex-col justify-between">
+		<!-- Reusable Header Component -->
+		<Header currentPath="/sandbox" />
+
+		<!-- Main Sandbox Area -->
+		<main class="flex-1 max-w-7xl w-full mx-auto px-4 py-8 md:py-12">
+			<!-- Header Title Area -->
+			<div class="mb-8 text-left">
+				<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 font-mono text-xs font-semibold tracking-widest uppercase mb-3 glow-border-rose">
+					<span class="w-1.5 h-1.5 rounded-full bg-rose-400 animate-ping"></span>
+					LUREGUARD SANDBOX PLAYGROUND
+				</div>
+				<h1 class="text-3xl md:text-4xl font-mono font-bold text-white mb-2 leading-tight">
+					./attack_sim.sh <span class="text-emerald-400">--interactive</span>
+				</h1>
+				<p class="text-slate-400 text-sm md:text-base font-sans max-w-3xl">
+					Execute attack scenarios in real time or type custom Bash commands to evaluate LureGuard’s &lt;150ms Fast Path ML scoring and automated Telegram response.
+				</p>
+			</div>
+
+			<!-- Split-Screen Interactive Terminal & Defense Panel -->
+			<SandboxContainer client:only="react" />
+		</main>
+
+		<!-- Footer -->
+		<footer class="w-full border-t border-slate-800/60 py-4 text-center font-mono text-xs text-slate-500">
+			<span>LureGuard.ai SOC Sandbox &copy; 2026 // Interactive Honeypot Defense Playground</span>
+		</footer>
+	</div>
+</Layout>

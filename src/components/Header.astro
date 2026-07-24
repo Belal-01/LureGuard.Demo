@@ -1,0 +1,57 @@
+---
+import { MatrixToggle } from './MatrixToggle';
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = Astro.url.pathname } = Astro.props;
+
+const navItems = [
+  { label: '~/home', href: '/', color: 'emerald' },
+  { label: 'man lureguard', href: '/docs', color: 'cyan' },
+  { label: 'top --live', href: '/dashboard', color: 'amber' },
+  { label: './attack_sim.sh', href: '/sandbox', color: 'rose' },
+];
+---
+
+<header class="w-full border-b border-slate-800/80 bg-cyber-dark/70 backdrop-blur-md sticky top-0 z-50 px-4 py-3">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <!-- Brand Logo -->
+    <a href="/" class="flex items-center gap-3 group">
+      <div class="p-2 rounded-lg bg-emerald-950/40 border border-emerald-500/30 text-emerald-400 glow-border-emerald group-hover:border-emerald-400 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+        </svg>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="font-mono font-bold text-lg text-white tracking-wider">LureGuard<span class="text-neon-emerald">.ai</span></span>
+        <span class="hidden sm:inline-block px-2 py-0.5 text-[10px] font-mono rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">v1.0.0-SOC</span>
+      </div>
+    </a>
+
+    <!-- Navigation CLI Style -->
+    <nav class="hidden md:flex items-center gap-6 font-mono text-sm">
+      {navItems.map((item) => {
+        const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
+        return (
+          <a
+            href={item.href}
+            class={`transition-all duration-200 flex items-center gap-1.5 ${
+              isActive
+                ? 'text-emerald-400 font-semibold border-b border-emerald-400 pb-0.5 glow-text-emerald'
+                : 'text-slate-400 hover:text-slate-200'
+            }`}
+          >
+            <span>{item.label}</span>
+          </a>
+        );
+      })}
+    </nav>
+
+    <!-- Right Actions & Matrix Toggle -->
+    <div class="flex items-center gap-3">
+      <MatrixToggle client:only="react" />
+    </div>
+  </div>
+</header>
