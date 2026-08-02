@@ -4,17 +4,31 @@
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'Fira Code', monospace;
 
-  /* Cyberpunk / SOC Theme Palette */
-  --color-cyber-dark: #080b10;
-  --color-cyber-card: #0f172a;
-  --color-cyber-panel: #0c1017;
+  /* =========================================================
+     [PREVIOUS THEME] Hacker / Red-Team Matrix Theme (Commented Out)
+     ---------------------------------------------------------
+     --color-cyber-dark: #080b10;
+     --color-cyber-card: #0f172a;
+     --color-cyber-panel: #0c1017;
+     --color-neon-emerald: #34d399;
+     --color-neon-cyan: #22d3ee;
+     --color-neon-amber: #fbbf24;
+     --color-neon-rose: #f43f5e;
+     ========================================================= */
+
+  /* [NEW THEME] Enterprise Blue-Team / SOC Sentinel Theme (PRIMARY: ELECTRIC BLUE) */
+  --color-cyber-dark: #060913;
+  --color-cyber-card: #0d1527;
+  --color-cyber-panel: #0a0f1d;
   --color-cyber-border: #1e293b;
   --color-cyber-muted: #64748b;
 
-  --color-neon-emerald: #34d399;
-  --color-neon-cyan: #22d3ee;
-  --color-neon-amber: #fbbf24;
-  --color-neon-rose: #f43f5e;
+  --color-neon-blue: #3b82f6;
+  --color-neon-cyan: #06b6d4;
+  --color-neon-emerald: #3b82f6; /* Remapped Primary Emerald to Electric Blue */
+  --color-neon-indigo: #6366f1;
+  --color-neon-amber: #f59e0b;
+  --color-neon-rose: #ef4444;
 }
 
 /* Global Reset & Base Styles */
@@ -33,78 +47,78 @@
     overflow-x: hidden;
   }
 
-  /* Cyberpunk Custom Scrollbar */
+  /* Enterprise Blue Custom Scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #080b10;
+    background: #060913;
   }
 
   ::-webkit-scrollbar-thumb {
     background: #1e293b;
     border-radius: 4px;
-    border: 1px solid rgba(52, 211, 153, 0.2);
+    border: 1px solid rgba(59, 130, 246, 0.3);
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #34d399;
-    box-shadow: 0 0 10px rgba(52, 211, 153, 0.5);
+    background: #3b82f6;
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
   }
 }
 
-/* Custom Cyber-CLI Utility Classes */
+/* Custom Blue-Team Utility Classes */
 @layer utilities {
-  /* Glassmorphism Panels */
+  /* Blue-Team Glassmorphism Panels */
   .glass-panel {
-    background: rgba(15, 23, 42, 0.65);
+    background: rgba(13, 21, 39, 0.8);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(30, 41, 59, 0.8);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
   }
 
   .glass-panel-interactive {
-    background: rgba(15, 23, 42, 0.65);
+    background: rgba(13, 21, 39, 0.8);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(30, 41, 59, 0.8);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .glass-panel-interactive:hover {
-    border-color: rgba(52, 211, 153, 0.4);
-    box-shadow: 0 0 20px rgba(52, 211, 153, 0.15), 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    border-color: rgba(59, 130, 246, 0.6);
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.25), 0 8px 32px 0 rgba(0, 0, 0, 0.6);
     transform: translateY(-2px);
   }
 
-  /* Neon Text Glows */
-  .glow-text-emerald {
-    text-shadow: 0 0 12px rgba(52, 211, 153, 0.5);
+  /* Blue Defender Text Glows */
+  .glow-text-blue, .glow-text-emerald {
+    text-shadow: 0 0 14px rgba(59, 130, 246, 0.65);
   }
 
   .glow-text-cyan {
-    text-shadow: 0 0 12px rgba(34, 211, 238, 0.5);
+    text-shadow: 0 0 14px rgba(6, 182, 212, 0.65);
   }
 
   .glow-text-rose {
-    text-shadow: 0 0 12px rgba(244, 63, 94, 0.5);
+    text-shadow: 0 0 14px rgba(239, 68, 68, 0.65);
   }
 
-  /* Neon Border Glows */
-  .glow-border-emerald {
-    box-shadow: 0 0 15px rgba(52, 211, 153, 0.25), inset 0 0 15px rgba(52, 211, 153, 0.05);
+  /* Blue Defender Border Glows */
+  .glow-border-blue, .glow-border-emerald {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.35), inset 0 0 15px rgba(59, 130, 246, 0.1);
   }
 
   .glow-border-cyan {
-    box-shadow: 0 0 15px rgba(34, 211, 238, 0.25), inset 0 0 15px rgba(34, 211, 238, 0.05);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.35), inset 0 0 15px rgba(6, 182, 212, 0.1);
   }
 
   .glow-border-rose {
-    box-shadow: 0 0 15px rgba(244, 63, 94, 0.25), inset 0 0 15px rgba(244, 63, 94, 0.05);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.35), inset 0 0 15px rgba(239, 68, 68, 0.1);
   }
 
   /* Terminal Scanline Overlay */
@@ -113,8 +127,8 @@
       to bottom,
       rgba(255,255,255,0),
       rgba(255,255,255,0) 50%,
-      rgba(0, 0, 0, 0.25) 50%,
-      rgba(0, 0, 0, 0.25)
+      rgba(0, 0, 0, 0.3) 50%,
+      rgba(0, 0, 0, 0.3)
     );
     background-size: 100% 4px;
   }
@@ -132,10 +146,10 @@
 
 @keyframes pulseGlow {
   0%, 100% {
-    box-shadow: 0 0 10px rgba(52, 211, 153, 0.2);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
   }
   50% {
-    box-shadow: 0 0 25px rgba(52, 211, 153, 0.5);
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
   }
 }
 

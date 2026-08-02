@@ -1,7 +1,10 @@
 import React from 'react';
 import { TerminalWindow } from './sandbox/TerminalWindow';
+import type { AttackScenario } from '../data/attackScenarios';
 
-interface InteractiveTerminalProps {
+export interface InteractiveTerminalProps {
+  activeScenario?: AttackScenario;
+  onSelectScenario?: (scenarioId: string) => void;
   onAttackTriggered?: (scenario: {
     name: string;
     threatScore: number;
@@ -18,3 +21,4 @@ export const InteractiveTerminal: React.FC<InteractiveTerminalProps> = (props) =
 };
 
 export { TerminalWindow };
+

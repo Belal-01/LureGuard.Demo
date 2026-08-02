@@ -32,7 +32,7 @@ export const Docs: React.FC = () => {
       {/* Left Sidebar Navigation (Always Pinned Left) */}
       <aside className="w-72 shrink-0 bg-slate-950/95 border-r border-slate-800/80 p-6 sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto z-20">
         <div className="flex items-center gap-2.5 mb-6 px-2">
-          <div className="p-1.5 rounded-lg bg-emerald-950/60 border border-emerald-500/30 text-emerald-400">
+          <div className="p-1.5 rounded-lg bg-blue-950/60 border border-blue-500/40 text-blue-400">
             <Terminal className="w-4 h-4" />
           </div>
           <div>
@@ -51,11 +51,11 @@ export const Docs: React.FC = () => {
                 onClick={() => setActiveSection(sec.id)}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all text-left ${
                   isActive
-                    ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold shadow-[0_0_15px_rgba(52,211,153,0.15)] glow-border-emerald'
+                    ? 'bg-blue-500/10 text-blue-400 border border-blue-500/30 font-bold shadow-[0_0_15px_rgba(59,130,246,0.2)] glow-border-blue'
                     : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/60'
                 }`}
               >
-                <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-emerald-400' : 'text-slate-500'}`} />
+                <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-blue-400' : 'text-slate-500'}`} />
                 <span className="truncate">{sec.title}</span>
               </button>
             );
@@ -69,11 +69,11 @@ export const Docs: React.FC = () => {
         {(activeSection === 'overview' || activeSection === 'all') && (
           <section id="overview" className="glass-panel p-6 md:p-10 rounded-2xl border border-slate-800 space-y-6">
             <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
-              <div className="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+              <div className="p-2.5 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-400">
                 <BookOpen className="w-6 h-6" />
               </div>
               <div>
-                <span className="text-xs font-mono text-emerald-400 uppercase tracking-widest">[SECTION 01]</span>
+                <span className="text-xs font-mono text-blue-400 uppercase tracking-widest">[SECTION 01]</span>
                 <h1 className="text-2xl md:text-3xl font-mono font-bold text-white">System Overview & Philosophy</h1>
               </div>
             </div>

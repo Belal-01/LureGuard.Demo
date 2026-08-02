@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Bot, X, Send, Sparkles, Terminal, ChevronRight, RefreshCw } from 'lucide-react';
+import { Bot, X, Send, Sparkles, ChevronRight, RefreshCw } from 'lucide-react';
 
 interface Message {
   id: string;
@@ -96,31 +96,31 @@ export const GlobalAIChatWidget: React.FC = () => {
         <button
           onClick={() => setIsOpen(!isOpen)}
           type="button"
-          className="group relative inline-flex items-center gap-2.5 px-4 py-3 rounded-full bg-slate-900/90 text-emerald-400 border border-emerald-500/40 hover:border-emerald-400 shadow-[0_0_25px_rgba(52,211,153,0.3)] hover:shadow-[0_0_35px_rgba(52,211,153,0.5)] transition-all duration-300 font-mono text-xs font-semibold backdrop-blur-md"
+          className="group relative inline-flex items-center gap-2.5 px-4 py-3 rounded-full bg-slate-900/90 text-blue-400 border border-blue-500/40 hover:border-blue-400 shadow-[0_0_25px_rgba(59,130,246,0.35)] hover:shadow-[0_0_35px_rgba(59,130,246,0.5)] transition-all duration-300 font-mono text-xs font-semibold backdrop-blur-md"
           aria-label="Toggle AI Chat Widget"
         >
           <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-400"></span>
           </span>
-          <Bot className="w-4 h-4 text-emerald-400 group-hover:rotate-12 transition-transform" />
+          <Bot className="w-4 h-4 text-blue-400 group-hover:rotate-12 transition-transform" />
           <span>Ask Me About LureGuard.ai 🤖</span>
         </button>
       </div>
 
       {/* Fly-out Chat Modal Container (Anchored Bottom-Left) */}
       {isOpen && (
-        <div className="fixed bottom-20 left-6 z-50 w-80 sm:w-96 glass-panel rounded-2xl border border-emerald-500/30 shadow-[0_0_50px_rgba(8,11,16,0.9)] glow-border-emerald overflow-hidden flex flex-col h-[500px] animate-fadeIn">
+        <div className="fixed bottom-20 left-6 z-50 w-80 sm:w-96 glass-panel rounded-2xl border border-blue-500/30 shadow-[0_0_50px_rgba(8,11,16,0.9)] glow-border-blue overflow-hidden flex flex-col h-[500px] animate-fadeIn">
           {/* Header */}
           <div className="bg-slate-950/90 px-4 py-3 border-b border-slate-800/80 flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <div className="p-1.5 rounded-lg bg-emerald-950/60 border border-emerald-500/30 text-emerald-400">
+              <div className="p-1.5 rounded-lg bg-blue-950/60 border border-blue-500/40 text-blue-400">
                 <Sparkles className="w-4 h-4" />
               </div>
               <div>
                 <h3 className="font-mono text-xs font-bold text-white flex items-center gap-1.5">
                   LureGuard Assistant
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-400 inline-block"></span>
                 </h3>
                 <p className="text-[10px] font-mono text-slate-400">AI Threat & SOC Knowledge Base</p>
               </div>
@@ -144,7 +144,7 @@ export const GlobalAIChatWidget: React.FC = () => {
                 <div
                   className={`max-w-[85%] p-3 rounded-xl leading-relaxed whitespace-pre-wrap ${
                     msg.sender === 'user'
-                      ? 'bg-emerald-500 text-cyber-dark font-medium rounded-br-none shadow-[0_0_15px_rgba(52,211,153,0.2)]'
+                      ? 'bg-blue-600 text-white font-medium rounded-br-none shadow-[0_0_15px_rgba(59,130,246,0.3)]'
                       : 'bg-slate-900/90 text-slate-200 border border-slate-800 rounded-bl-none font-mono text-[11px]'
                   }`}
                 >
@@ -160,10 +160,10 @@ export const GlobalAIChatWidget: React.FC = () => {
                       <button
                         key={idx}
                         onClick={() => handleSend(prompt)}
-                        className="w-full text-left text-[11px] font-mono px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-emerald-950/60 border border-slate-800 hover:border-emerald-500/40 text-slate-300 hover:text-emerald-400 transition-all flex items-center justify-between group"
+                        className="w-full text-left text-[11px] font-mono px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-blue-950/60 border border-slate-800 hover:border-blue-500/40 text-slate-300 hover:text-blue-400 transition-all flex items-center justify-between group"
                       >
                         <span>{prompt}</span>
-                        <ChevronRight className="w-3 h-3 text-slate-500 group-hover:text-emerald-400 transition-colors" />
+                        <ChevronRight className="w-3 h-3 text-slate-500 group-hover:text-blue-400 transition-colors" />
                       </button>
                     ))}
                   </div>
@@ -173,7 +173,7 @@ export const GlobalAIChatWidget: React.FC = () => {
 
             {isTyping && (
               <div className="flex items-center gap-2 text-slate-400 text-xs font-mono bg-slate-900/80 p-2.5 rounded-xl border border-slate-800 w-fit">
-                <RefreshCw className="w-3 h-3 animate-spin text-emerald-400" />
+                <RefreshCw className="w-3 h-3 animate-spin text-blue-400" />
                 <span>Assistant is thinking...</span>
               </div>
             )}
@@ -193,12 +193,12 @@ export const GlobalAIChatWidget: React.FC = () => {
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="Ask about architecture, sandbox, deploy..."
-              className="flex-1 bg-slate-900/80 border border-slate-800 text-slate-200 placeholder-slate-500 text-xs font-mono px-3 py-2 rounded-lg focus:outline-none focus:border-emerald-500/50"
+              className="flex-1 bg-slate-900/80 border border-slate-800 text-slate-200 placeholder-slate-500 text-xs font-mono px-3 py-2 rounded-lg focus:outline-none focus:border-blue-500/50"
             />
             <button
               type="submit"
               disabled={!inputValue.trim()}
-              className="p-2 rounded-lg bg-emerald-500 text-cyber-dark hover:bg-emerald-400 disabled:opacity-40 disabled:hover:bg-emerald-500 transition-all"
+              className="p-2 rounded-lg bg-blue-600 text-white hover:bg-blue-500 disabled:opacity-40 disabled:hover:bg-blue-600 transition-all"
               aria-label="Send Message"
             >
               <Send className="w-3.5 h-3.5" />

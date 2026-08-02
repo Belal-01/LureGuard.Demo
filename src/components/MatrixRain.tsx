@@ -70,7 +70,7 @@ export const MatrixRain: React.FC<MatrixRainProps> = ({
 
     window.addEventListener('resize', handleResize);
 
-    // If animation is disabled, clear canvas or draw single subtle static frame
+    // If animation is disabled, clear canvas
     if (!isRunning) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       return () => {
@@ -87,10 +87,9 @@ export const MatrixRain: React.FC<MatrixRainProps> = ({
       lastFrameTime = currentTime - (elapsed % frameInterval);
 
       // Semi-transparent fade effect for trail
-      ctx.fillStyle = 'rgba(8, 11, 16, 0.15)';
+      ctx.fillStyle = 'rgba(6, 9, 19, 0.15)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = '#34d399'; // Emerald Neon
       ctx.font = `${fontSize}px 'Fira Code', monospace`;
 
       for (let i = 0; i < drops.length; i++) {
@@ -98,11 +97,11 @@ export const MatrixRain: React.FC<MatrixRainProps> = ({
         const x = i * fontSize;
         const y = drops[i] * fontSize;
 
-        // Alternate glowing head character vs subtle stream
+        // Alternate glowing cyan head vs electric blue stream
         if (Math.random() > 0.92) {
-          ctx.fillStyle = '#22d3ee'; // Cyan glow head
+          ctx.fillStyle = '#06b6d4'; // Cyan glow head
         } else {
-          ctx.fillStyle = '#34d399';
+          ctx.fillStyle = '#3b82f6'; // Electric Blue stream
         }
 
         ctx.fillText(text, x, y);
