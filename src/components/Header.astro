@@ -1,5 +1,6 @@
 ---
-import { MatrixToggle } from './MatrixToggle';
+import { MatrixToggle } from "./MatrixToggle";
+import { ThemeToggle } from "./ThemeToggle";
 
 interface Props {
   currentPath?: string;
@@ -8,50 +9,64 @@ interface Props {
 const { currentPath = Astro.url.pathname } = Astro.props;
 
 const navItems = [
-  { label: '~/home', href: '/', color: 'blue' },
-  { label: 'man lureguard', href: '/docs', color: 'cyan' },
-  { label: 'top --live', href: '/dashboard', color: 'amber' },
-  { label: './attack_sim.sh', href: '/#sandbox', color: 'rose' },
+  { label: "~/home", href: "/", color: "blue" },
+  { label: "man lureguard", href: "/docs", color: "cyan" },
+  { label: "top --live", href: "/dashboard", color: "amber" },
+  { label: "./attack_sim.sh", href: "/#sandbox", color: "rose" },
 ];
 ---
 
-<header class="w-full border-b border-slate-800/80 bg-cyber-dark/80 backdrop-blur-md sticky top-0 z-50 px-4 py-3">
-  <div class="max-w-7xl mx-auto flex items-center justify-between">
+<header
+  class="w-full top-0 left-0 right-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300"
+>
+  <div
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between"
+  >
     <!-- Brand Logo -->
-    <a href="/" class="flex items-center gap-3 group">
-      <div class="p-2 rounded-lg bg-blue-950/40 border border-blue-500/40 text-blue-400 glow-border-blue group-hover:border-blue-400 transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
-        </svg>
-      </div>
-      <div class="flex items-center gap-2">
-        <span class="font-mono font-bold text-lg text-white tracking-wider">LureGuard<span class="text-blue-400">.ai</span></span>
-        <span class="hidden sm:inline-block px-2 py-0.5 text-[10px] font-mono rounded bg-blue-500/10 text-blue-400 border border-blue-500/30 font-bold">v1.0.0-SOC</span>
-      </div>
-    </a>
+    <div class="flex-1 flex items-center justify-start">
+      <a href="/" class="flex items-center gap-1.5 group select-none">
+        <div
+          class="flex items-center text-slate-900 dark:text-white font-black italic tracking-tighter text-xl sm:text-2xl"
+        >
+          <span>LURE</span>
+          <span class="text-cyan-600 dark:text-cyan-400 flex items-center ml-0.5 glow-text-cyan">
+            GUARD
+            <span
+              class="inline-block w-2.5 h-2.5 ml-1 bg-cyan-500 dark:bg-cyan-400 rounded-sm transform rotate-45 group-hover:scale-110 transition-transform shadow-[0_0_10px_rgba(34,211,238,0.6)]"
+            ></span>
+          </span>
+        </div>
+      </a>
+    </div>
 
-    <!-- Navigation CLI Style -->
-    <nav class="hidden md:flex items-center gap-6 font-mono text-sm">
-      {navItems.map((item) => {
-        const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
-        return (
-          <a
-            href={item.href}
-            class={`transition-all duration-200 flex items-center gap-1.5 ${
-              isActive
-                ? 'text-blue-400 font-semibold border-b border-blue-400 pb-0.5 glow-text-blue'
-                : 'text-slate-400 hover:text-slate-200'
-            }`}
-          >
-            <span>{item.label}</span>
-          </a>
-        );
-      })}
+    <!-- Navigation Links -->
+    <nav
+      class="hidden md:flex flex-1 items-center justify-center gap-5 lg:gap-8 font-sans"
+    >
+      {
+        navItems.map((item) => {
+          const isActive =
+            currentPath === item.href ||
+            (item.href !== "/" && currentPath.startsWith(item.href));
+          return (
+            <a
+              href={item.href}
+              class={`text-xs lg:text-sm font-bold tracking-wider uppercase transition-colors py-1 whitespace-nowrap ${
+                isActive
+                  ? "text-cyan-600 dark:text-cyan-400 font-extrabold border-b-2 border-cyan-600 dark:border-cyan-400"
+                  : "text-slate-600 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400"
+              }`}
+            >
+              {item.label}
+            </a>
+          );
+        })
+      }
     </nav>
 
-    <!-- Right Actions & Matrix Toggle -->
-    <div class="flex items-center gap-3">
-      <MatrixToggle client:only="react" />
+    <!-- Right Actions (Theme Toggle Button) -->
+    <div class="flex-1 flex items-center justify-end gap-3">
+      <ThemeToggle client:only="react" />
     </div>
   </div>
 </header>

@@ -18,7 +18,7 @@ export const TextScramble: React.FC<TextScrambleProps> = ({
   useEffect(() => {
     let frame = 0;
     const totalFrames = text.length * 3;
-    let animationInterval: NodeJS.Timeout;
+    let animationInterval: ReturnType<typeof setInterval>;
 
     animationInterval = setInterval(() => {
       frame++;

@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'Fira Code', monospace;
@@ -16,10 +18,10 @@
      --color-neon-rose: #f43f5e;
      ========================================================= */
 
-  /* [NEW THEME] Enterprise Blue-Team / SOC Sentinel Theme (PRIMARY: ELECTRIC BLUE) */
-  --color-cyber-dark: #060913;
-  --color-cyber-card: #0d1527;
-  --color-cyber-panel: #0a0f1d;
+  /* [NEW THEME] Enterprise Pitch-Black Theme (Rapid7 Style) */
+  --color-cyber-dark: #000000;
+  --color-cyber-card: #0a0a0a;
+  --color-cyber-panel: #050505;
   --color-cyber-border: #1e293b;
   --color-cyber-muted: #64748b;
 
@@ -34,33 +36,58 @@
 /* Global Reset & Base Styles */
 @layer base {
   html {
-    color-scheme: dark;
     scroll-behavior: smooth;
-    background-color: var(--color-cyber-dark);
+  }
+
+  html.dark {
+    color-scheme: dark;
+    background-color: #000000;
+  }
+
+  html.light, html:not(.dark) {
+    color-scheme: light;
+    background-color: #f8fafc;
   }
 
   body {
-    background-color: var(--color-cyber-dark);
-    color: #e2e8f0;
     font-family: var(--font-sans);
     min-height: 100vh;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-  /* Enterprise Blue Custom Scrollbar */
+  html.dark body {
+    background-color: #000000;
+    color: #e2e8f0;
+  }
+
+  html.light body, html:not(.dark) body {
+    background-color: #f8fafc;
+    color: #0f172a;
+  }
+
+  /* Enterprise Custom Scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
   }
 
-  ::-webkit-scrollbar-track {
-    background: #060913;
+  html.dark ::-webkit-scrollbar-track {
+    background: #000000;
+  }
+
+  html.light ::-webkit-scrollbar-track {
+    background: #f1f5f9;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #1e293b;
+    background: #94a3b8;
     border-radius: 4px;
     border: 1px solid rgba(59, 130, 246, 0.3);
+  }
+
+  html.dark ::-webkit-scrollbar-thumb {
+    background: #1e293b;
   }
 
   ::-webkit-scrollbar-thumb:hover {

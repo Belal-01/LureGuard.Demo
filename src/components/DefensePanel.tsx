@@ -15,6 +15,8 @@ import {
   Shield,
   Layers,
   Zap,
+  ChevronDown,
+  ChevronUp,
 } from 'lucide-react';
 import type { AttackScenario } from '../data/attackScenarios';
 import { ATTACK_SCENARIOS } from '../data/attackScenarios';
@@ -29,18 +31,27 @@ export const DefensePanel: React.FC<DefensePanelProps> = ({
   simulatedStage = 3,
 }) => {
   const [telegramToast, setTelegramToast] = useState<{ visible: boolean; data: AttackScenario } | null>(null);
+  const [isToastExpanded, setIsToastExpanded] = useState<boolean>(false);
   const [analystNotice, setAnalystNotice] = useState<string | null>(null);
+  const isFirstLoadRef = React.useRef(true);
 
-  // Trigger Telegram Toast Alert ONLY when stage 3 is reached
+  // Trigger Telegram Toast Alert ONLY when stage 3 is reached after user interaction (NOT on page load/reload)
   useEffect(() => {
+    if (isFirstLoadRef.current) {
+      isFirstLoadRef.current = false;
+      return;
+    }
+
     if (simulatedStage === 3 && activeScenario) {
       setTelegramToast({ visible: true, data: activeScenario });
+      setIsToastExpanded(false);
       const timer = setTimeout(() => {
         setTelegramToast(null);
-      }, 6000);
+      }, 8000);
       return () => clearTimeout(timer);
     } else if (simulatedStage < 3) {
       setTelegramToast(null);
+      setIsToastExpanded(false);
     }
   }, [simulatedStage, activeScenario]);
 
@@ -297,33 +308,50 @@ export const DefensePanel: React.FC<DefensePanelProps> = ({
         </div>
       </div>
 
-      {/* Floating Telegram Toast Alert (Appears ONLY on Stage 3 with slide-in right animation) */}
+      {/* Floating Telegram Toast Alert (Appears ONLY on Stage 3 with slide-in left animation) */}
       {telegramToast && telegramToast.visible && (
-        <div className="fixed bottom-6 right-6 z-50 w-80 sm:w-96 glass-panel p-4 rounded-xl border border-blue-500/50 bg-cyber-card/95 backdrop-blur-xl shadow-[0_0_35px_rgba(59,130,246,0.35)] glow-border-blue space-y-2.5 animate-slide-in-right text-left dir-ltr">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-2">
-            <span className="text-xs font-mono font-bold text-blue-400 flex items-center gap-1.5">
+        <div className="fixed top-10 right-6 z-50 w-80 sm:w-96 glass-panel p-3.5 rounded-xl border border-blue-500/50 bg-cyber-card/95 backdrop-blur-xl shadow-[0_0_35px_rgba(59,130,246,0.35)] glow-border-blue animate-slide-in-right text-left dir-ltr transition-all duration-300">
+          <div className={`flex items-center justify-between transition-all duration-200 ${isToastExpanded ? 'border-b border-slate-800 pb-2.5 mb-2.5' : 'pb-0 mb-0'}`}>
+            <span
+              onClick={() => setIsToastExpanded(!isToastExpanded)}
+              className="text-xs font-mono font-bold text-blue-400 flex items-center gap-1.5 cursor-pointer select-none hover:text-blue-300 transition-colors"
+              title="Click to toggle details"
+            >
               <Send className="w-3.5 h-3.5 text-blue-400 animate-pulse" />
               TELEGRAM SOC ALERT DISPATCHED
             </span>
-            <button
-              onClick={() => setTelegramToast(null)}
-              className="text-slate-400 hover:text-white p-1 rounded hover:bg-slate-800 transition-colors"
-              aria-label="Dismiss Telegram Alert"
-            >
-              <X className="w-4 h-4" />
-            </button>
+            <div className="flex items-center gap-1">
+              <button 
+                onClick={() => setIsToastExpanded(!isToastExpanded)}
+                className="text-slate-400 hover:text-white px-1.5 py-1 rounded hover:bg-slate-800 transition-colors flex items-center gap-1 text-[10px] font-mono border border-slate-800"
+                aria-label={isToastExpanded ? "Collapse Alert Body" : "Expand Alert Body"}
+                title={isToastExpanded ? "Collapse message" : "Expand message"}
+              >
+               {/*  <span className="hidden sm:inline text-slate-300">{isToastExpanded ? "Hide" : "Show Details"}</span>    */} 
+                {isToastExpanded ? <ChevronUp className="w-3.5 h-3.5 text-blue-400" /> : <ChevronDown className="w-3.5 h-3.5 text-blue-400" />}
+              </button>
+              <button
+                onClick={() => setTelegramToast(null)}
+                className="text-slate-400 hover:text-white p-1 rounded hover:bg-slate-800 transition-colors"
+                aria-label="Dismiss Telegram Alert"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
           </div>
 
-          <div className="bg-slate-950/90 p-3 rounded-lg border border-slate-800 font-mono text-xs text-slate-200 leading-relaxed space-y-1 select-text">
-            <div className="text-rose-400 font-bold flex items-center justify-between">
-              <span>🚨 LUREGUARD HIGH PRIORITY ALERT</span>
-              <span className="text-[10px] text-slate-500 font-mono">@LureGuardAlertBot</span>
+          {isToastExpanded && (
+            <div className="bg-slate-950/90 p-3 rounded-lg border border-slate-800 font-mono text-xs text-slate-200 leading-relaxed space-y-1 select-text animate-fadeIn">
+              <div className="text-rose-400 font-bold flex items-center justify-between">
+                <span>🚨 LUREGUARD HIGH PRIORITY ALERT</span>
+                <span className="text-[10px] text-slate-500 font-mono">@LureGuardAlertBot</span>
+              </div>
+              <div><span className="text-slate-400">Target IP / Event:</span> {telegramToast.data.ip} ({telegramToast.data.location})</div>
+              <div><span className="text-slate-400">Threat Score:</span> <span className="text-rose-400 font-bold">{telegramToast.data.threatScore}/100</span></div>
+              <div><span className="text-slate-400">Rule ID:</span> <span className="text-amber-400">{telegramToast.data.ruleId}</span></div>
+              <div><span className="text-slate-400">Action:</span> <span className="text-blue-400 font-bold">{telegramToast.data.pipelineAction}</span></div>
             </div>
-            <div><span className="text-slate-400">Target IP / Event:</span> {telegramToast.data.ip} ({telegramToast.data.location})</div>
-            <div><span className="text-slate-400">Threat Score:</span> <span className="text-rose-400 font-bold">{telegramToast.data.threatScore}/100</span></div>
-            <div><span className="text-slate-400">Rule ID:</span> <span className="text-amber-400">{telegramToast.data.ruleId}</span></div>
-            <div><span className="text-slate-400">Action:</span> <span className="text-blue-400 font-bold">{telegramToast.data.pipelineAction}</span></div>
-          </div>
+          )}
         </div>
       )}
     </div>
