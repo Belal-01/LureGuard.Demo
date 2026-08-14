@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import HeroSection from "../components/HeroSection.astro";
+import { LureGuardDashboardShowcase } from "../components/LureGuardDashboardShowcase";
 import ProblemSection from "../components/ProblemSection.astro";
 import ArchitectureSection from "../components/ArchitectureSection.astro";
 import { WhatLureGuardDoesSection } from "../components/WhatLureGuardDoesSection";
@@ -28,6 +29,9 @@ import { SandboxContainer } from "../components/SandboxContainer";
     <!-- Hero Section Component -->
     <main class="flex-1 w-full">
       <HeroSection />
+
+      <!-- Live Interactive Dashboard Showcase Section -->
+      <LureGuardDashboardShowcase client:only="react" />
 
       <!-- What Does LureGuard Do Section (Auto-Rotating Progress Tab Bar) -->
       <WhatLureGuardDoesSection client:only="react" />

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Check,
-  ArrowUpRight,
-} from 'lucide-react';
+import { Check, ArrowUpRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 import { ThreatIntelligenceCard } from './ThreatIntelligenceCard';
+import { SectionHeader } from './SectionHeader';
 
 interface TabData {
   id: string;
@@ -94,23 +93,28 @@ export const WhatLureGuardDoesSection: React.FC = () => {
   const currentTab = TABS[activeTab];
 
   return (
-    <section className="max-w-7xl w-full mx-auto px-4 py-12 md:py-20 text-left dir-ltr relative z-10">
-      {/* Main Section Header */}
-      <div className="mb-10 text-left">
-        <div className="inline-flex items-center gap-2 font-mono text-xs text-cyan-600 dark:text-cyan-400 uppercase tracking-widest mb-3">
-          <span className="text-slate-400 dark:text-slate-500">—</span>
-          <span>UNDER THE HOOD</span>
-        </div>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-mono font-bold text-slate-900 dark:text-white leading-tight">
-          What Does LureGuard Do?
-        </h2>
-        <p className="text-slate-600 dark:text-slate-400 text-sm md:text-base font-sans mt-2 max-w-2xl">
-          Autonomous Threat Prevention & Incident Response Lifecycle Built for Zero-Trust Infrastructure.
-        </p>
-      </div>
+    <section className="w-full px-6 sm:px-8 py-12 md:py-20 text-left dir-ltr relative z-10 border-b border-slate-200/80 dark:border-slate-800/80 overflow-hidden">
+      {/* Main Section Header with Entrance Animation */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-50px' }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
+      >
+        <SectionHeader
+          tag="UNDER THE HOOD"
+          title="What Does LureGuard Do?"
+          subtitle="Autonomous Threat Prevention & Incident Response Lifecycle Built for Zero-Trust Infrastructure."
+          align="center"
+        />
+      </motion.div>
 
       {/* Horizontal Tabs Header Bar */}
-      <div
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-40px' }}
+        transition={{ duration: 0.5, delay: 0.1 }}
         className="relative mb-12"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
@@ -119,22 +123,23 @@ export const WhatLureGuardDoesSection: React.FC = () => {
           {TABS.map((tab, idx) => {
             const isActive = activeTab === idx;
             return (
-              <button
+              <motion.button
                 key={tab.id}
+                whileTap={{ scale: 0.97 }}
                 onClick={() => handleTabClick(idx)}
-                className={`relative px-4 py-2.5 rounded-lg border transition-all duration-300 shrink-0 flex items-center gap-2 text-xs font-mono font-semibold tracking-wider ${
+                className={`relative px-4 py-2.5 rounded-lg border transition-all duration-300 shrink-0 flex items-center gap-2 text-xs font-mono font-semibold tracking-wider cursor-pointer ${
                   isActive
                     ? 'border-cyan-500/50 bg-cyan-50 dark:bg-cyan-950/20 text-cyan-950 dark:text-white shadow-sm dark:shadow-[0_0_20px_rgba(6,182,212,0.15)]'
                     : 'border-slate-200 dark:border-slate-800/90 bg-slate-100/70 dark:bg-slate-900/40 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700 hover:text-slate-900 dark:hover:text-slate-200'
                 }`}
               >
                 {isActive ? (
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400 shadow-[0_0_8px_#22d3ee]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400 shadow-[0_0_8px_#22d3ee] animate-pulse" />
                 ) : (
                   <span className="w-1.5 h-1.5 rounded-full bg-slate-400 dark:bg-slate-600" />
                 )}
                 <span>{tab.tabLabel}</span>
-              </button>
+              </motion.button>
             );
           })}
         </div>
@@ -146,57 +151,71 @@ export const WhatLureGuardDoesSection: React.FC = () => {
             style={{ width: `${progress}%` }}
           />
         </div>
-      </div>
+      </motion.div>
 
-      {/* Dynamic 2-Column Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        {/* Left Column: Title, Subtitle, Checklist & CTA */}
-        <div className="lg:col-span-6 space-y-6">
-          <h3 className="text-2xl sm:text-3xl md:text-4xl font-sans font-bold text-slate-900 dark:text-white leading-tight tracking-tight">
-            {currentTab.title}
-          </h3>
+      {/* Dynamic 2-Column Content Grid with Tab Transition Animations */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -15 }}
+          transition={{ duration: 0.35, ease: 'easeOut' }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center"
+        >
+          {/* Left Column: Title, Subtitle, Checklist & CTA */}
+          <div className="lg:col-span-6 space-y-6">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-sans font-bold text-slate-900 dark:text-white leading-tight tracking-tight">
+              {currentTab.title}
+            </h3>
 
-          <p className="text-slate-700 dark:text-slate-300 text-base md:text-lg leading-relaxed font-sans max-w-xl">
-            {currentTab.description}
-          </p>
+            <p className="text-slate-700 dark:text-slate-300 text-base md:text-lg leading-relaxed font-sans max-w-xl">
+              {currentTab.description}
+            </p>
 
-          {/* Checklist Bullet Points with Circular Checkmark Badges */}
-          <ul className="space-y-4 pt-2">
-            {currentTab.highlights.map((item, idx) => (
-              <li key={idx} className="flex items-center gap-3">
-                <div className="w-5 h-5 rounded-full bg-cyan-500/10 dark:bg-cyan-500/20 border border-cyan-500/30 dark:border-cyan-500/40 text-cyan-600 dark:text-cyan-400 flex items-center justify-center shrink-0">
-                  <Check className="w-3 h-3 stroke-[3]" />
-                </div>
-                <span className="text-slate-900 dark:text-white font-sans text-sm md:text-base font-semibold">
-                  {item}
-                </span>
-              </li>
-            ))}
-          </ul>
+            {/* Checklist Bullet Points with Circular Checkmark Badges */}
+            <ul className="space-y-4 pt-2">
+              {currentTab.highlights.map((item, idx) => (
+                <motion.li
+                  key={idx}
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: idx * 0.08 }}
+                  className="flex items-center gap-3"
+                >
+                  <div className="w-5 h-5 rounded-full bg-cyan-500/10 dark:bg-cyan-500/20 border border-cyan-500/30 dark:border-cyan-500/40 text-cyan-600 dark:text-cyan-400 flex items-center justify-center shrink-0">
+                    <Check className="w-3 h-3 stroke-[3]" />
+                  </div>
+                  <span className="text-slate-900 dark:text-white font-sans text-sm md:text-base font-semibold">
+                    {item}
+                  </span>
+                </motion.li>
+              ))}
+            </ul>
 
-          {/* Bottom Action CTA Button */}
-          <div className="pt-4">
-            <a
-              href="#sandbox"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-sans text-sm font-bold bg-slate-900 dark:bg-white hover:bg-slate-800 dark:hover:bg-slate-100 text-white dark:text-slate-950 transition-all duration-300 group shadow-md dark:shadow-[0_0_25px_rgba(255,255,255,0.15)] hover:shadow-lg dark:hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] transform hover:-translate-y-0.5"
-            >
-              <span>Get started</span>
-              <ArrowUpRight className="w-4 h-4 text-white dark:text-slate-950 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 stroke-[2.5]" />
-            </a>
+            {/* Bottom Action CTA Button */}
+            <div className="pt-4">
+              <a
+                href="#install"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-sans text-sm font-bold bg-slate-900 dark:bg-white hover:bg-slate-800 dark:hover:bg-slate-100 text-white dark:text-slate-950 transition-all duration-300 group shadow-md dark:shadow-[0_0_25px_rgba(255,255,255,0.15)] hover:shadow-lg dark:hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] transform hover:-translate-y-0.5"
+              >
+                <span>Get started</span>
+                <ArrowUpRight className="w-4 h-4 text-white dark:text-slate-950 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 stroke-[2.5]" />
+              </a>
+            </div>
           </div>
-        </div>
 
-        {/* Right Column: Sleek High-Tech Product Card (Reusable ThreatIntelligenceCard Component) */}
-        <div className="lg:col-span-6 w-full">
-          <ThreatIntelligenceCard
-            activeTab={activeTab}
-            cardHeader={currentTab.cardHeader}
-            cardBadge={currentTab.cardBadge}
-            glowColor="#06b6d4"
-          />
-        </div>
-      </div>
+          {/* Right Column: Sleek High-Tech Product Card */}
+          <div className="lg:col-span-6 w-full">
+            <ThreatIntelligenceCard
+              activeTab={activeTab}
+              cardHeader={currentTab.cardHeader}
+              cardBadge={currentTab.cardBadge}
+              glowColor="#06b6d4"
+            />
+          </div>
+        </motion.div>
+      </AnimatePresence>
     </section>
   );
 };
-

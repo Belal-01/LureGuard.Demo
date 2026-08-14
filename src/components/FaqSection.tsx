@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Plus, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { SectionHeader } from './SectionHeader';
 
 interface FaqItem {
   id: string;
@@ -75,30 +77,43 @@ export const FaqSection: React.FC = () => {
   };
 
   return (
-    <section className="max-w-7xl w-full mx-auto px-4 py-16 md:py-24 text-left dir-ltr relative z-10">
+    <section className="w-full px-6 sm:px-8 py-16 md:py-24 text-left dir-ltr relative z-10 border-b border-slate-200/80 dark:border-slate-800/80 overflow-hidden">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-        {/* Left Column: Heading & Subtitle */}
-        <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-28">
-          <div className="inline-flex items-center gap-2 font-mono text-xs text-cyan-600 dark:text-cyan-400 uppercase tracking-widest">
-            <span className="text-slate-400 dark:text-slate-500">—</span>
-            <span>FAQS</span>
-          </div>
+        {/* Left Column: Heading & Subtitle with Entrance Animation */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="lg:col-span-5 lg:sticky lg:top-28"
+        >
+          <SectionHeader
+            tag="FREQUENTLY ASKED QUESTIONS"
+            title="The questions security teams actually ask us."
+            subtitle="Pulled from the real conversations that happen before a team adopts LureGuard."
+            align="left"
+          />
+        </motion.div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-mono font-bold text-slate-900 dark:text-white leading-[1.15] tracking-tight">
-            The questions security teams actually ask us.
-          </h2>
-
-          <p className="text-slate-600 dark:text-slate-400 text-base md:text-lg font-sans leading-relaxed">
-            Pulled from the real conversations that happen before a team adopts LureGuard.
-          </p>
-        </div>
-
-        {/* Right Column: Accordion List */}
-        <div className="lg:col-span-7 divide-y divide-slate-200 dark:divide-slate-800/80 border-t border-b border-slate-200 dark:border-slate-800/80">
-          {FAQ_ITEMS.map((item) => {
+        {/* Right Column: Accordion List with Staggered Animations */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
+          className="lg:col-span-7 divide-y divide-slate-200 dark:divide-slate-800/80 border-t border-b border-slate-200 dark:border-slate-800/80"
+        >
+          {FAQ_ITEMS.map((item, index) => {
             const isOpen = openId === item.id;
             return (
-              <div key={item.id} className="py-5 sm:py-6 transition-colors group">
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="py-5 sm:py-6 transition-colors group"
+              >
                 <button
                   onClick={() => toggleFaq(item.id)}
                   type="button"
@@ -110,7 +125,7 @@ export const FaqSection: React.FC = () => {
                       {item.number}
                     </span>
                     <h3
-                      className={`text-base sm:text-lg md:text-xl font-mono font-bold transition-colors ${
+                      className={`text-base sm:text-lg md:text-xl font-mono font-bold transition-colors duration-200 ${
                         isOpen
                           ? 'text-cyan-600 dark:text-cyan-400'
                           : 'text-slate-900 dark:text-slate-100 group-hover:text-cyan-600 dark:group-hover:text-cyan-400'
@@ -120,9 +135,11 @@ export const FaqSection: React.FC = () => {
                     </h3>
                   </div>
 
-                  {/* Circle Toggle Button */}
-                  <div
-                    className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
+                  {/* Animated Circle Toggle Button */}
+                  <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0, scale: isOpen ? 1.05 : 1 }}
+                    transition={{ duration: 0.3, ease: 'backOut' }}
+                    className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors duration-300 ${
                       isOpen
                         ? 'bg-blue-600 dark:bg-blue-600 text-white shadow-[0_0_15px_rgba(37,99,235,0.6)]'
                         : 'bg-slate-200/80 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-600 dark:text-slate-400 group-hover:border-slate-400 dark:group-hover:border-slate-700'
@@ -133,19 +150,30 @@ export const FaqSection: React.FC = () => {
                     ) : (
                       <Plus className="w-4 h-4 stroke-[2.5]" />
                     )}
-                  </div>
+                  </motion.div>
                 </button>
 
-                {/* Expanded Answer */}
-                {isOpen && (
-                  <div className="pl-8 sm:pl-12 pr-10 pt-4 text-slate-600 dark:text-slate-300 font-sans text-sm sm:text-base leading-relaxed animate-fadeIn">
-                    <p>{item.answer}</p>
-                  </div>
-                )}
-              </div>
+                {/* Animated Expanded Answer Body */}
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      key="content"
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.35, ease: [0.04, 0.62, 0.23, 0.98] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pl-8 sm:pl-12 pr-10 pt-4 text-slate-600 dark:text-slate-300 font-sans text-sm sm:text-base leading-relaxed">
+                        <p>{item.answer}</p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -38,7 +38,9 @@ const {
 			})();
 		</script>
 	</head>
-	<body class="bg-slate-50 dark:bg-black text-slate-900 dark:text-slate-200 font-sans antialiased selection:bg-cyan-500 selection:text-black min-h-screen relative overflow-x-hidden transition-colors duration-300">
-		<slot />
+	<body class="bg-slate-100 dark:bg-[#070709] bg-grid-pattern text-slate-900 dark:text-slate-200 font-sans antialiased selection:bg-cyan-500 selection:text-black min-h-screen relative overflow-x-hidden transition-colors duration-300">
+		<div class="max-w-[1450px] mx-auto min-h-screen bg-white dark:bg-[#0a0a0d] border-x border-slate-200 dark:border-slate-800/80 shadow-2xl relative flex flex-col justify-between">
+			<slot />
+		</div>
 	</body>
 </html>
