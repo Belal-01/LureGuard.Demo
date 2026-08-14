@@ -1475,7 +1475,7 @@ export default function LureGuardDashboardShowcase() {
   const activeLabel = TABS.find((t) => t.id === activeTab)?.label ?? '';
 
   return (
-    <section ref={rootRef} className="relative bg-white dark:bg-[#0a0a0d] py-20 px-4 sm:px-8 transition-colors duration-300">
+    <section ref={rootRef} className="relative bg-white dark:bg-[#141923] py-20 px-4 sm:px-8 transition-colors duration-300">
       <style>{`
         @keyframes tic-arrive {
           0% { opacity: 0; transform: translateY(-6px); }
@@ -1533,7 +1533,7 @@ export default function LureGuardDashboardShowcase() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-xs font-mono whitespace-nowrap transition-all duration-200 cursor-pointer text-left ${
+                    className={`flex items-center gap-2.5 px-3 py-2.5  text-xs font-mono whitespace-nowrap transition-all duration-200 cursor-pointer text-left ${
                       isActive
                         ? 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30 font-semibold shadow-xs'
                         : 'text-slate-600 dark:text-[#7e8eb0] hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-[#121822] border border-transparent'

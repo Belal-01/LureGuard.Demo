@@ -6,7 +6,7 @@ import { SectionHeader } from './SectionHeader';
 
 export const CtaSection: React.FC = () => {
   return (
-    <section className="w-full py-20 md:py-28 relative z-10 bg-white dark:bg-[#0a0a0d] transition-colors overflow-hidden border-t border-slate-200/80 dark:border-slate-800/80">
+    <section className="w-full py-20 md:py-28 relative z-10 bg-white dark:bg-[#141923] transition-colors overflow-hidden border-t border-slate-200/80 dark:border-slate-800/80">
       {/* Ambient Central Glow Light with Subtle Pulse */}
       <motion.div
         animate={{
