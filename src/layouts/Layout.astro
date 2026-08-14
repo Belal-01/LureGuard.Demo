@@ -1,0 +1,56 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "LureGuard.ai — Cyber-Security & Honeypot Monitoring Platform",
+  description = "Autonomous AI Honeypot & Threat Intelligence SOC Gateway Platform",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" dir="ltr" class="dark scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/images/logo.png" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script is:inline>
+      (function () {
+        const theme =
+          localStorage.getItem("lureguard_theme") ||
+          (window.matchMedia("(prefers-color-scheme: light)").matches
+            ? "light"
+            : "dark");
+        if (theme === "light") {
+          document.documentElement.classList.remove("dark");
+          document.documentElement.classList.add("light");
+        } else {
+          document.documentElement.classList.add("dark");
+          document.documentElement.classList.remove("light");
+        }
+      })();
+    </script>
+  </head>
+  <body
+    class="bg-slate-100 dark:bg-[#0a0a0d] bg-grid-pattern text-slate-900 dark:text-slate-200 font-sans antialiased selection:bg-cyan-500 selection:text-black min-h-screen relative overflow-x-hidden transition-colors duration-300"
+  >
+    <div
+      class="max-w-[1450px] mx-auto min-h-screen bg-white dark:bg-[#141923] border-x border-slate-200 dark:border-slate-800/80 relative flex flex-col justify-between"
+    >
+      <slot />
+    </div>
+  </body>
+</html>
