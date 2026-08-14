@@ -6,7 +6,7 @@ import { SectionHeader } from './SectionHeader';
 
 export const CtaSection: React.FC = () => {
   return (
-    <section className="w-full py-20 md:py-28 relative z-10 bg-slate-50/50 dark:bg-black/30 transition-colors overflow-hidden border-t border-slate-200/80 dark:border-slate-800/80">
+    <section className="w-full py-20 md:py-28 relative z-10 bg-white dark:bg-[#0a0a0d] transition-colors overflow-hidden border-t border-slate-200/80 dark:border-slate-800/80">
       {/* Ambient Central Glow Light with Subtle Pulse */}
       <motion.div
         animate={{
@@ -23,8 +23,8 @@ export const CtaSection: React.FC = () => {
         <GlowLight
           color="#06b6d4"
           position="top-1/2 left-1/2"
-          size="w-[550px] h-[200px] sm:w-[850px] sm:h-[200px]"
-          blur="blur-[120px]"
+          size="w-[550px] h-[150px] sm:w-[850px] sm:h-[150px]"
+          blur="blur-[60px]"
           opacity="opacity-50 dark:opacity-50"
           offset="-translate-x-1/2 -translate-y-1/2"
           className="-z-10 pointer-events-none"

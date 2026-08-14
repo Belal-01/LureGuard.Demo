@@ -1194,6 +1194,58 @@ const OPENCODE_EXCHANGES = [
   },
 ];
 
+function OpencodeLogo() {
+  return (
+    <div className="flex flex-col items-center justify-center my-3 select-none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="641"
+        height="115"
+        viewBox="0 0 641 115"
+        fill="none"
+        className="h-9 sm:h-12 w-auto overflow-visible drop-shadow-[0_0_12px_rgba(255,255,255,0.15)]"
+      >
+        <g clipPath="url(#clip0_1401_86292)">
+          <mask
+            id="mask0_1401_86292"
+            style={{ maskType: 'luminance' }}
+            maskUnits="userSpaceOnUse"
+            x="0"
+            y="0"
+            width="641"
+            height="115"
+          >
+            <path d="M640.714 0H0V115H640.714V0Z" fill="white" />
+          </mask>
+          <g mask="url(#mask0_1401_86292)">
+            <path d="M49.2868 82.1433H16.4297V49.2861H49.2868V82.1433Z" fill="#4B4646" />
+            <path d="M49.2857 32.8573H16.4286V82.143H49.2857V32.8573ZM65.7143 98.5716H0V16.4287H65.7143V98.5716Z" fill="#B7B1B1" />
+            <path d="M131.427 82.1433H98.5703V49.2861H131.427V82.1433Z" fill="#4B4646" />
+            <path d="M98.5692 82.143H131.426V32.8573H98.5692V82.143ZM147.855 98.5716H98.5692V115H82.1406V16.4287H147.855V98.5716Z" fill="#B7B1B1" />
+            <path d="M229.997 65.7139V82.1424H180.711V65.7139H229.997Z" fill="#4B4646" />
+            <path d="M230.003 65.7144H180.718V82.143H230.003V98.5716H164.289V16.4287H230.003V65.7144ZM180.718 49.2859H213.575V32.8573H180.718V49.2859Z" fill="#B7B1B1" />
+            <path d="M295.717 98.5718H262.859V49.2861H295.717V98.5718Z" fill="#4B4646" />
+            <path d="M295.715 32.8573H262.858V98.5716H246.43V16.4287H295.715V32.8573ZM312.144 98.5716H295.715V32.8573H312.144V98.5716Z" fill="#B7B1B1" />
+            <path d="M394.286 82.1433H345V49.2861H394.286V82.1433Z" fill="#4B4646" />
+            <path d="M394.285 32.8573H344.999V82.143H394.285V98.5716H328.57V16.4287H394.285V32.8573Z" fill="#F1ECEC" />
+            <path d="M459.998 82.1433H427.141V49.2861H459.998V82.1433Z" fill="#4B4646" />
+            <path d="M459.997 32.8573H427.14V82.143H459.997V32.8573ZM476.425 98.5716H410.711V16.4287H476.425V98.5716Z" fill="#F1ECEC" />
+            <path d="M542.146 82.1433H509.289V49.2861H542.146V82.1433Z" fill="#4B4646" />
+            <path d="M542.145 32.8571H509.288V82.1429H542.145V32.8571ZM558.574 98.5714H492.859V16.4286H542.145V0H558.574V98.5714Z" fill="#F1ECEC" />
+            <path d="M640.715 65.7139V82.1424H591.43V65.7139H640.715Z" fill="#4B4646" />
+            <path d="M591.429 32.8573V49.2859H624.286V32.8573H591.429ZM640.714 65.7144H591.429V82.143H640.714V98.5716H575V16.4287H640.714V65.7144Z" fill="#F1ECEC" />
+          </g>
+        </g>
+        <defs>
+          <clipPath id="clip0_1401_86292">
+            <rect width="640.714" height="115" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+    </div>
+  );
+}
+
 /* Terminal-style live chat: types a prompt, then the agent's reply,
    pauses, then cycles to the next example — loops while `active`. */
 function OpencodeChat({ active }: { active: boolean }) {
@@ -1202,11 +1254,25 @@ function OpencodeChat({ active }: { active: boolean }) {
   const [responseLen, setResponseLen] = useState(0);
   const [showResponse, setShowResponse] = useState(false);
 
+  const prompts = [
+    'What is the tech stack of this project?',
+    'Read skills/triage.md and triage alerts from last 2 hours',
+    'Enrich the IP behind the last blocked session',
+    'Draft an executive security report for incident #9C347A',
+  ];
+
+  const responses = [
+    'LureGuard.ai is powered by Astro, React 19, Motion, and opencode AI agents.',
+    '3 SSH brute-force bursts contained · 1 credential stuffing sweep flagged.',
+    '185.220.101.5 → TOR exit node · AbuseIPDB score 98 · 214 reports',
+    'Report generated · attack chain, IOCs, and remediation steps attached.',
+  ];
+
   useEffect(() => {
     if (!active) return;
     let cancelled = false;
     const timers: ReturnType<typeof setTimeout>[] = [];
-    const exchange = OPENCODE_EXCHANGES[exchangeIndex];
+    const currentPrompt = prompts[exchangeIndex];
 
     setPromptLen(0);
     setResponseLen(0);
@@ -1218,9 +1284,9 @@ function OpencodeChat({ active }: { active: boolean }) {
         if (cancelled) return;
         i++;
         setPromptLen(i);
-        if (i < exchange.prompt.length) typePrompt();
-        else timers.push(setTimeout(startResponse, 500));
-      }, 22);
+        if (i < currentPrompt.length) typePrompt();
+        else timers.push(setTimeout(startResponse, 600));
+      }, 24);
       timers.push(t);
     };
 
@@ -1233,13 +1299,13 @@ function OpencodeChat({ active }: { active: boolean }) {
           if (cancelled) return;
           j++;
           setResponseLen(j);
-          if (j < exchange.response.length) typeResponse();
+          if (j < responses[exchangeIndex].length) typeResponse();
           else
             timers.push(
               setTimeout(() => {
                 if (cancelled) return;
-                setExchangeIndex((idx) => (idx + 1) % OPENCODE_EXCHANGES.length);
-              }, 2200)
+                setExchangeIndex((idx) => (idx + 1) % prompts.length);
+              }, 2500)
             );
         }, 16);
         timers.push(t);
@@ -1255,38 +1321,72 @@ function OpencodeChat({ active }: { active: boolean }) {
     };
   }, [active, exchangeIndex]);
 
-  const exchange = OPENCODE_EXCHANGES[exchangeIndex];
+  const currentPrompt = prompts[exchangeIndex];
+  const currentResponse = responses[exchangeIndex];
 
   return (
-    <div className="border border-slate-200/80 dark:border-[#212832] bg-slate-100/80 dark:bg-[#0a0d12] overflow-hidden transition-colors duration-300">
-      <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-200/80 dark:border-[#1a2029]">
-        <span className="w-2.5 h-2.5 rounded-full bg-rose-400/70 dark:bg-[#4a3038]" />
-        <span className="w-2.5 h-2.5 rounded-full bg-amber-400/70 dark:bg-[#4a4230]" />
-        <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/70 dark:bg-[#2e4a38]" />
-        <span className="ml-2 text-[10px] font-mono text-slate-500 dark:text-[#6b7686] tracking-wider">opencode</span>
-      </div>
-      <div className="p-4 font-mono text-[12.5px] leading-relaxed min-h-[180px] text-slate-800 dark:text-slate-200">
-        <div className="text-slate-500 dark:text-[#4d5766]">$ opencode</div>
-        <div className="mt-2 flex items-start gap-2">
-          <span className="text-blue-600 dark:text-[#6c93f5] flex-shrink-0">opencode&gt;</span>
-          <span className="text-slate-800 dark:text-[#c3cad6]">
-            {exchange.prompt.slice(0, promptLen)}
-            {promptLen < exchange.prompt.length && (
-              <span className="inline-block w-[6px] h-[12px] bg-emerald-500 dark:bg-[#35d399] ml-0.5 align-middle animate-pulse" />
-            )}
-          </span>
-        </div>
-        {showResponse && (
-          <div className="mt-3 flex items-start gap-2">
-            <span className="text-emerald-600 dark:text-[#35d399] flex-shrink-0 font-bold">[agent]</span>
-            <span className="text-slate-600 dark:text-[#8a93a3]">
-              {exchange.response.slice(0, responseLen)}
-              {responseLen < exchange.response.length && (
-                <span className="inline-block w-[6px] h-[12px] bg-emerald-500 dark:bg-[#35d399] ml-0.5 align-middle animate-pulse" />
-              )}
-            </span>
+    <div className="relative  border border-slate-300/80 dark:border-[#27272a] bg-slate-950 dark:bg-[#09090b] text-white overflow-hidden p-6 sm:p-8 flex flex-col items-center justify-between min-h-[340px] font-mono select-none transition-colors duration-300">
+      {/* Top Opencode Block Pixel Logo matching Image */}
+      <OpencodeLogo />
+
+      {/* Center Search / Prompt Input Box matching Image */}
+      <div className="w-full max-w-xl my-3">
+        <div className="relative bg-[#18181b] dark:bg-[#131316] border border-[#27272a] rounded-md p-3.5 sm:p-4 shadow-xl flex items-stretch gap-3">
+          {/* Blue Vertical Indicator Line on Left */}
+          <div className="w-1 bg-cyan-500 dark:bg-blue-500 rounded-full shrink-0" />
+
+          <div className="flex-1 space-y-2 text-left min-w-0">
+            {/* Top Prompt Line with Hollow Cursor */}
+            <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-300 font-mono overflow-hidden">
+              <span className="inline-block w-2.5 h-4 border border-white/80 bg-white/20 animate-pulse shrink-0" />
+              <span className="text-slate-400 shrink-0">Ask anything...</span>
+              <span className="text-white font-medium truncate">
+                "{currentPrompt.slice(0, promptLen)}"
+              </span>
+            </div>
+
+            {/* Sub-line Modes: Build . Big Pickle OpenCode Zen */}
+            <div className="flex items-center gap-2 text-[11px] font-mono text-slate-400 border-t border-[#27272a]/60 pt-2">
+              <span className="text-cyan-400 dark:text-blue-400 font-bold">Build</span>
+              <span className="text-slate-600">·</span>
+              <span className="font-bold text-white">Big Pickle</span>
+              <span className="text-slate-500">OpenCode Zen</span>
+            </div>
           </div>
+        </div>
+
+        {/* Shortcuts Bar Below Box */}
+        <div className="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-[#71717a] mt-2.5 px-1">
+          <div className="flex items-center gap-3">
+            <span><strong className="text-slate-300 font-semibold">tab</strong> agents</span>
+            <span><strong className="text-slate-300 font-semibold">ctrl+p</strong> commands</span>
+          </div>
+        </div>
+
+        {/* Live Agent Output Response Card */}
+        {showResponse && (
+          <motion.div
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-3.5 p-3 rounded-lg bg-[#18181b]/90 border border-[#27272a] text-left text-xs font-mono"
+          >
+            <div className="flex items-start gap-2">
+              <span className="text-emerald-400 font-bold shrink-0">[agent]</span>
+              <span className="text-slate-300">
+                {currentResponse.slice(0, responseLen)}
+                {responseLen < currentResponse.length && (
+                  <span className="inline-block w-1.5 h-3 bg-emerald-400 ml-0.5 align-middle animate-pulse" />
+                )}
+              </span>
+            </div>
+          </motion.div>
         )}
+      </div>
+
+      {/* Bottom Footer Info: ~ on left, version 1.18.5 on right */}
+      <div className="w-full flex items-center justify-between text-[10px] font-mono text-slate-600 dark:text-[#52525b] pt-2">
+        <span>~</span>
+        <span>1.18.5</span>
       </div>
     </div>
   );
@@ -1375,7 +1475,7 @@ export default function LureGuardDashboardShowcase() {
   const activeLabel = TABS.find((t) => t.id === activeTab)?.label ?? '';
 
   return (
-    <section ref={rootRef} className="relative bg-slate-50/70 dark:bg-[#0a0d12] py-20 px-4 sm:px-8 transition-colors duration-300">
+    <section ref={rootRef} className="relative bg-white dark:bg-[#0a0a0d] py-20 px-4 sm:px-8 transition-colors duration-300">
       <style>{`
         @keyframes tic-arrive {
           0% { opacity: 0; transform: translateY(-6px); }
@@ -1391,7 +1491,7 @@ export default function LureGuardDashboardShowcase() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-50px' }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
-        className="max-w-6xl mx-auto"
+        className="max-w-[1360px] mx-auto"
       >
         {/* Section header */}
         <SectionHeader
@@ -1401,40 +1501,8 @@ export default function LureGuardDashboardShowcase() {
           align="center"
         />
 
-        {/* Tab bar */}
-        <div className="relative border-b border-slate-200 dark:border-[#1a2029] mb-6 overflow-x-auto scrollbar-hide">
-          <div className="flex gap-1 min-w-max px-1">
-            {TABS.map((tab) => {
-              const Icon = tab.icon;
-              const isActive = tab.id === activeTab;
-              return (
-                <motion.button
-                  key={tab.id}
-                  ref={(el) => {
-                    tabRefs.current[tab.id] = el;
-                  }}
-                  whileTap={{ scale: 0.97 }}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 px-4 py-3 text-xs font-mono whitespace-nowrap transition-colors cursor-pointer ${
-                    isActive
-                      ? 'text-cyan-600 dark:text-cyan-400 font-semibold'
-                      : 'text-slate-600 dark:text-[#6b7686] hover:text-slate-900 dark:hover:text-[#a8b2c1]'
-                  }`}
-                >
-                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-cyan-600 dark:text-cyan-400' : ''}`} />
-                  {tab.label}
-                </motion.button>
-              );
-            })}
-          </div>
-          <div
-            className="absolute bottom-0 h-[2px] bg-cyan-500 dark:bg-cyan-400  transition-all duration-300 ease-out"
-            style={{ left: `${underline.left}px`, width: `${underline.width}px` }}
-          />
-        </div>
-
         {/* Dashboard window */}
-        <div className=" border border-slate-200/90 dark:border-[#212832] bg-white/95 dark:bg-[#0c0f15]/95 backdrop-blur-xl  overflow-hidden transition-colors duration-300">
+        <div className="border border-slate-200/90 dark:border-[#212832] bg-white/95 dark:bg-[#0c0f15]/95 backdrop-blur-xl overflow-hidden transition-colors duration-300">
           <div className="flex items-center gap-2 px-5 py-3 border-b border-slate-200 dark:border-[#1a2029] bg-slate-100/90 dark:bg-[#0d1117]">
             <span className="w-2.5 h-2.5 rounded-full bg-rose-400/70 dark:bg-[#4a3038]" />
             <span className="w-2.5 h-2.5 rounded-full bg-amber-400/70 dark:bg-[#4a4230]" />
@@ -1451,25 +1519,55 @@ export default function LureGuardDashboardShowcase() {
             </div>
           </div>
 
-          <div className="p-5 sm:p-6 bg-slate-50/50 dark:bg-transparent min-h-[420px]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.28, ease: 'easeOut' }}
-              >
-                {activeTab === 'opencode' && <OpencodePanel active={visible} />}
-                {activeTab === 'soc' && <SocPanel active={visible} />}
-                {activeTab === 'agent' && <AgentPanel active={visible} />}
-                {activeTab === 'posture' && <PosturePanel active={visible} />}
-                {activeTab === 'investigation' && <InvestigationPanel active={visible} />}
-                {activeTab === 'explorer' && <ExplorerPanel active={visible} />}
-                {activeTab === 'fleet' && <FleetPanel active={visible} />}
-                {activeTab === 'assets' && <AssetsPanel active={visible} />}
-              </motion.div>
-            </AnimatePresence>
+          {/* Window Body: Left Sidebar Navigation + Right Content View */}
+          <div className="flex flex-col md:flex-row min-h-[580px] md:min-h-[630px]">
+            {/* Left Navigation Sidebar */}
+            <div className="w-full md:w-56 shrink-0 border-b md:border-b-0 md:border-r border-slate-200 dark:border-[#1a2029] bg-slate-100/70 dark:bg-[#090c10] p-2.5 flex md:flex-col gap-1 overflow-x-auto md:overflow-x-visible scrollbar-hide">
+              <div className="hidden md:block px-3 py-2 text-[10px] font-mono uppercase tracking-widest text-slate-400 dark:text-[#4d5766]">
+                Console Navigation
+              </div>
+              {TABS.map((tab) => {
+                const Icon = tab.icon;
+                const isActive = tab.id === activeTab;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-xs font-mono whitespace-nowrap transition-all duration-200 cursor-pointer text-left ${
+                      isActive
+                        ? 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30 font-semibold shadow-xs'
+                        : 'text-slate-600 dark:text-[#7e8eb0] hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-[#121822] border border-transparent'
+                    }`}
+                  >
+                    <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-cyan-600 dark:text-cyan-400' : 'text-slate-400 dark:text-[#64748b]'}`} />
+                    <span>{tab.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Main Active Panel View (Consistent Height) */}
+            <div className="flex-1 p-5 sm:p-6 bg-slate-50/50 dark:bg-transparent min-w-0 flex flex-col">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTab}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.28, ease: 'easeOut' }}
+                  className="flex-1 flex flex-col justify-between"
+                >
+                  {activeTab === 'opencode' && <OpencodePanel active={visible} />}
+                  {activeTab === 'soc' && <SocPanel active={visible} />}
+                  {activeTab === 'agent' && <AgentPanel active={visible} />}
+                  {activeTab === 'posture' && <PosturePanel active={visible} />}
+                  {activeTab === 'investigation' && <InvestigationPanel active={visible} />}
+                  {activeTab === 'explorer' && <ExplorerPanel active={visible} />}
+                  {activeTab === 'fleet' && <FleetPanel active={visible} />}
+                  {activeTab === 'assets' && <AssetsPanel active={visible} />}
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </motion.div>

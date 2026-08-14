@@ -141,7 +141,7 @@ export const FaqSection: React.FC = () => {
                     transition={{ duration: 0.3, ease: 'backOut' }}
                     className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors duration-300 ${
                       isOpen
-                        ? 'bg-blue-600 dark:bg-blue-600 text-white shadow-[0_0_15px_rgba(37,99,235,0.6)]'
+                        ? 'bg-cyan-600 dark:bg-cyan-600 text-white '
                         : 'bg-slate-200/80 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-600 dark:text-slate-400 group-hover:border-slate-400 dark:group-hover:border-slate-700'
                     }`}
                   >
