@@ -32,7 +32,7 @@ export const Docs: React.FC = () => {
       {/* Left Sidebar Navigation (Always Pinned Left) */}
       <aside className="w-72 shrink-0 bg-slate-950/95 border-r border-slate-800/80 p-6 sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto z-20">
         <div className="flex items-center gap-2.5 mb-6 px-2">
-          <div className="p-1.5 rounded-lg bg-blue-950/60 border border-blue-500/40 text-blue-400">
+          <div className="p-1.5  bg-blue-950/60 border border-blue-500/40 text-blue-400">
             <Terminal className="w-4 h-4" />
           </div>
           <div>
@@ -49,7 +49,7 @@ export const Docs: React.FC = () => {
               <button
                 key={sec.id}
                 onClick={() => setActiveSection(sec.id)}
-                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all text-left ${
+                className={`w-full flex items-center gap-3 px-3 py-2.5  transition-all text-left ${
                   isActive
                     ? 'bg-blue-500/10 text-blue-400 border border-blue-500/30 font-bold shadow-[0_0_15px_rgba(59,130,246,0.2)] glow-border-blue'
                     : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/60'
@@ -67,9 +67,9 @@ export const Docs: React.FC = () => {
       <main className="flex-1 min-w-0 p-6 md:p-10 max-w-5xl overflow-y-auto space-y-12">
         {/* Section 1: System Overview & Philosophy */}
         {(activeSection === 'overview' || activeSection === 'all') && (
-          <section id="overview" className="glass-panel p-6 md:p-10 rounded-2xl border border-slate-800 space-y-6">
+          <section id="overview" className="glass-panel p-6 md:p-10  border border-slate-800 space-y-6">
             <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
-              <div className="p-2.5 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-400">
+              <div className="p-2.5  bg-blue-500/10 border border-blue-500/30 text-blue-400">
                 <BookOpen className="w-6 h-6" />
               </div>
               <div>
@@ -83,7 +83,7 @@ export const Docs: React.FC = () => {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
-              <div className="glass-panel p-5 rounded-xl border border-slate-800/80 bg-cyber-card/40 space-y-2">
+              <div className="glass-panel p-5  border border-slate-800/80 bg-cyber-card/40 space-y-2">
                 <div className="flex items-center gap-2 text-emerald-400 font-mono text-xs font-bold">
                   <Zap className="w-4 h-4" />
                   <span>1. LEAN ARCHITECTURE</span>
@@ -93,7 +93,7 @@ export const Docs: React.FC = () => {
                 </p>
               </div>
 
-              <div className="glass-panel p-5 rounded-xl border border-slate-800/80 bg-cyber-card/40 space-y-2">
+              <div className="glass-panel p-5  border border-slate-800/80 bg-cyber-card/40 space-y-2">
                 <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold">
                   <Server className="w-4 h-4" />
                   <span>2. PROTOCOL SCOPE</span>
@@ -103,7 +103,7 @@ export const Docs: React.FC = () => {
                 </p>
               </div>
 
-              <div className="glass-panel p-5 rounded-xl border border-slate-800/80 bg-cyber-card/40 space-y-2">
+              <div className="glass-panel p-5  border border-slate-800/80 bg-cyber-card/40 space-y-2">
                 <div className="flex items-center gap-2 text-rose-400 font-mono text-xs font-bold">
                   <Lock className="w-4 h-4" />
                   <span>3. CHANNEL ISOLATION</span>
@@ -118,9 +118,9 @@ export const Docs: React.FC = () => {
 
         {/* Section 2: Architecture & Data Pipeline */}
         {(activeSection === 'architecture' || activeSection === 'all') && (
-          <section id="architecture" className="glass-panel p-6 md:p-10 rounded-2xl border border-slate-800 space-y-6">
+          <section id="architecture" className="glass-panel p-6 md:p-10  border border-slate-800 space-y-6">
             <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
-              <div className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400">
+              <div className="p-2.5  bg-cyan-500/10 border border-cyan-500/30 text-cyan-400">
                 <Layers className="w-6 h-6" />
               </div>
               <div>
@@ -131,7 +131,7 @@ export const Docs: React.FC = () => {
 
             <div className="space-y-4">
               <h3 className="font-mono text-sm font-bold text-white">Visual Pipeline Flow</h3>
-              <div className="bg-slate-950/90 p-4 rounded-xl border border-slate-800 font-mono text-xs text-emerald-400 overflow-x-auto scanline-bg">
+              <div className="bg-slate-950/90 p-4  border border-slate-800 font-mono text-xs text-emerald-400 overflow-x-auto scanline-bg">
                 SSH Event ➔ Wazuh Agent ➔ integratord ➔ LureGuard Core Ingestion ➔ ML Inference ➔ Policy Decision ➔ iptables DNAT / Telegram Alert
               </div>
             </div>
@@ -140,13 +140,13 @@ export const Docs: React.FC = () => {
               <div className="space-y-3">
                 <h4 className="font-mono text-xs font-bold text-cyan-400 uppercase">Core Components</h4>
                 <ul className="space-y-2 text-xs font-mono text-slate-300">
-                  <li className="flex items-start gap-2 bg-slate-900/60 p-3 rounded-lg border border-slate-800">
+                  <li className="flex items-start gap-2 bg-slate-900/60 p-3  border border-slate-800">
                     <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                     <div>
                       <span className="text-white font-bold">Wazuh Agent & Manager:</span> Collects auth.log, syslog, cowrie.json, FIM, and rootcheck.
                     </div>
                   </li>
-                  <li className="flex items-start gap-2 bg-slate-900/60 p-3 rounded-lg border border-slate-800">
+                  <li className="flex items-start gap-2 bg-slate-900/60 p-3  border border-slate-800">
                     <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                     <div>
                       <span className="text-white font-bold">LureGuard Core (FastAPI / Python 3.14):</span> Single-process monolith eliminating inter-service HTTP overhead.
@@ -158,13 +158,13 @@ export const Docs: React.FC = () => {
               <div className="space-y-3">
                 <h4 className="font-mono text-xs font-bold text-cyan-400 uppercase">Persistence & Containers</h4>
                 <ul className="space-y-2 text-xs font-mono text-slate-300">
-                  <li className="flex items-start gap-2 bg-slate-900/60 p-3 rounded-lg border border-slate-800">
+                  <li className="flex items-start gap-2 bg-slate-900/60 p-3  border border-slate-800">
                     <Database className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
                     <div>
                       <span className="text-white font-bold">PostgreSQL 16:</span> Primary DB storing raw events, ML decisions, sessions, and LLM summaries.
                     </div>
                   </li>
-                  <li className="flex items-start gap-2 bg-slate-900/60 p-3 rounded-lg border border-slate-800">
+                  <li className="flex items-start gap-2 bg-slate-900/60 p-3  border border-slate-800">
                     <Radio className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
                     <div>
                       <span className="text-white font-bold">Cowrie Profiles:</span> Isolated Docker traps (dev-server on port 2222, db-server on port 2223).
@@ -178,9 +178,9 @@ export const Docs: React.FC = () => {
 
         {/* Section 3: ML Detection Engine & Feature Vector */}
         {(activeSection === 'ml-engine' || activeSection === 'all') && (
-          <section id="ml-engine" className="glass-panel p-6 md:p-10 rounded-2xl border border-slate-800 space-y-6">
+          <section id="ml-engine" className="glass-panel p-6 md:p-10  border border-slate-800 space-y-6">
             <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
-              <div className="p-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400">
+              <div className="p-2.5  bg-amber-500/10 border border-amber-500/30 text-amber-400">
                 <Cpu className="w-6 h-6" />
               </div>
               <div>
@@ -252,7 +252,7 @@ export const Docs: React.FC = () => {
               </div>
             </div>
 
-            <div className="glass-panel p-4 rounded-xl border border-amber-500/30 bg-amber-950/10 text-xs font-mono text-amber-300 flex items-start gap-3">
+            <div className="glass-panel p-4  border border-amber-500/30 bg-amber-950/10 text-xs font-mono text-amber-300 flex items-start gap-3">
               <AlertTriangle className="w-5 h-5 shrink-0 text-amber-400 mt-0.5" />
               <div>
                 <span className="font-bold block mb-1">Whitelist Optimization (Fail-Safe):</span>
@@ -264,9 +264,9 @@ export const Docs: React.FC = () => {
 
         {/* Section 4: Decision Engine & Dynamic Deception */}
         {(activeSection === 'decision-engine' || activeSection === 'all') && (
-          <section id="decision-engine" className="glass-panel p-6 md:p-10 rounded-2xl border border-slate-800 space-y-6">
+          <section id="decision-engine" className="glass-panel p-6 md:p-10  border border-slate-800 space-y-6">
             <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
-              <div className="p-2.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-400">
+              <div className="p-2.5  bg-rose-500/10 border border-rose-500/30 text-rose-400">
                 <Shield className="w-6 h-6" />
               </div>
               <div>
@@ -278,19 +278,19 @@ export const Docs: React.FC = () => {
             <div className="space-y-4">
               <h3 className="font-mono text-sm font-bold text-white">Two-Threshold Policy Rules</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono text-xs">
-                <div className="bg-slate-900/80 p-4 rounded-xl border border-emerald-500/40 space-y-2">
+                <div className="bg-slate-900/80 p-4  border border-emerald-500/40 space-y-2">
                   <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold">ALLOW</span>
                   <div className="text-slate-300 font-bold">Score S &le; T1 (0.55)</div>
                   <p className="text-slate-400 text-[11px]">Normal legitimate traffic. Passed through without network enforcement.</p>
                 </div>
 
-                <div className="bg-slate-900/80 p-4 rounded-xl border border-amber-500/40 space-y-2">
+                <div className="bg-slate-900/80 p-4  border border-amber-500/40 space-y-2">
                   <span className="px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-bold">ALERT</span>
                   <div className="text-slate-300 font-bold">T1 &lt; Score S &le; T2 (0.70)</div>
                   <p className="text-slate-400 text-[11px]">Suspicious activity. Dispatches instant Telegram notification without blocking.</p>
                 </div>
 
-                <div className="bg-slate-900/80 p-4 rounded-xl border border-rose-500/40 space-y-2">
+                <div className="bg-slate-900/80 p-4  border border-rose-500/40 space-y-2">
                   <span className="px-2 py-0.5 rounded bg-rose-500/20 text-rose-400 font-bold">REDIRECT</span>
                   <div className="text-slate-300 font-bold">Score S &gt; T2 (0.70)</div>
                   <p className="text-slate-400 text-[11px]">Active attack. Applies iptables DNAT redirect to honeypot & sends TCP RST.</p>
@@ -300,7 +300,7 @@ export const Docs: React.FC = () => {
 
             <div className="space-y-3 pt-2">
               <h3 className="font-mono text-sm font-bold text-white">Dynamic Honeypot Profile Selector Logic</h3>
-              <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-slate-300 space-y-2">
+              <div className="bg-slate-950 p-4  border border-slate-800 font-mono text-xs text-slate-300 space-y-2">
                 <div className="text-cyan-400 font-bold">// Pure Function Profile Routing</div>
                 <div><span className="text-amber-400">DB-oriented usernames</span> (postgres, mysql, redis, mongo) ➔ <span className="text-white font-bold">db-server (port 2223)</span></div>
                 <div><span className="text-emerald-400">Dev/System usernames</span> (deploy, git, docker, ubuntu, app) ➔ <span className="text-white font-bold">dev-server (port 2222)</span></div>
@@ -312,9 +312,9 @@ export const Docs: React.FC = () => {
 
         {/* Section 5: BYOLLM Summarization & Security */}
         {(activeSection === 'byollm' || activeSection === 'all') && (
-          <section id="byollm" className="glass-panel p-6 md:p-10 rounded-2xl border border-slate-800 space-y-6">
+          <section id="byollm" className="glass-panel p-6 md:p-10  border border-slate-800 space-y-6">
             <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
-              <div className="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
+              <div className="p-2.5  bg-emerald-500/10 border border-emerald-500/30 text-emerald-400">
                 <Bot className="w-6 h-6" />
               </div>
               <div>
@@ -328,7 +328,7 @@ export const Docs: React.FC = () => {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="glass-panel p-5 rounded-xl border border-slate-800/80 bg-cyber-card/40 space-y-3">
+              <div className="glass-panel p-5  border border-slate-800/80 bg-cyber-card/40 space-y-3">
                 <h4 className="font-mono text-xs font-bold text-emerald-400 uppercase">Supported Providers</h4>
                 <ul className="space-y-1.5 font-mono text-xs text-slate-300">
                   <li>• <span className="text-white font-bold">Ollama:</span> Local Llama 3 8B / DeepSeek R1</li>
@@ -338,7 +338,7 @@ export const Docs: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="glass-panel p-5 rounded-xl border border-rose-500/30 bg-rose-950/10 space-y-3">
+              <div className="glass-panel p-5  border border-rose-500/30 bg-rose-950/10 space-y-3">
                 <h4 className="font-mono text-xs font-bold text-rose-400 uppercase">Critical Security Rule</h4>
                 <p className="text-slate-300 text-xs leading-relaxed font-mono">
                   LLM outputs are strictly <strong>EVIDENCE CONSUMERS</strong> and NEVER influence network policy or security decision-making.
@@ -348,7 +348,7 @@ export const Docs: React.FC = () => {
 
             <div className="space-y-3">
               <h4 className="font-mono text-xs font-bold text-cyan-400 uppercase">Prompt Injection Defense</h4>
-              <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-slate-300">
+              <div className="bg-slate-950 p-4  border border-slate-800 font-mono text-xs text-slate-300">
                 Attacker input is sanitized & wrapped in strict boundaries:
                 <div className="text-cyan-300 mt-2 p-2 bg-slate-900 rounded border border-slate-800">
                   &lt;&lt;&lt;ATTACKER_INPUT&gt;&gt;&gt;<br />
@@ -362,9 +362,9 @@ export const Docs: React.FC = () => {
 
         {/* Section 6: API, Admin & Operations */}
         {(activeSection === 'api-operations' || activeSection === 'all') && (
-          <section id="api-operations" className="glass-panel p-6 md:p-10 rounded-2xl border border-slate-800 space-y-6">
+          <section id="api-operations" className="glass-panel p-6 md:p-10  border border-slate-800 space-y-6">
             <div className="flex items-center gap-3 border-b border-slate-800 pb-4">
-              <div className="p-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400">
+              <div className="p-2.5  bg-cyan-500/10 border border-cyan-500/30 text-cyan-400">
                 <Terminal className="w-6 h-6" />
               </div>
               <div>
@@ -375,7 +375,7 @@ export const Docs: React.FC = () => {
 
             <div className="space-y-4">
               <h3 className="font-mono text-sm font-bold text-white">Wazuh Ingestion Endpoint</h3>
-              <div className="bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono text-xs text-slate-300 space-y-1">
+              <div className="bg-slate-950 p-4  border border-slate-800 font-mono text-xs text-slate-300 space-y-1">
                 <div className="text-emerald-400 font-bold">POST /wazuh/event</div>
                 <div className="text-slate-400">Header: <code className="text-cyan-300">X-LureGuard-Token: &lt;SECRET_TOKEN&gt;</code></div>
               </div>
@@ -384,22 +384,22 @@ export const Docs: React.FC = () => {
             <div className="space-y-4">
               <h3 className="font-mono text-sm font-bold text-white">Admin API Endpoints (Bearer Token Required)</h3>
               <div className="space-y-2 font-mono text-xs">
-                <div className="bg-slate-900/80 p-3 rounded-lg border border-slate-800 flex items-center justify-between">
+                <div className="bg-slate-900/80 p-3  border border-slate-800 flex items-center justify-between">
                   <span className="text-amber-400 font-bold">GET / PUT /config/thresholds</span>
                   <span className="text-slate-400">Dynamic runtime T1 / T2 calibration</span>
                 </div>
-                <div className="bg-slate-900/80 p-3 rounded-lg border border-slate-800 flex items-center justify-between">
+                <div className="bg-slate-900/80 p-3  border border-slate-800 flex items-center justify-between">
                   <span className="text-cyan-400 font-bold">GET / POST / DELETE /whitelist</span>
                   <span className="text-slate-400">IP whitelist management (f8 override)</span>
                 </div>
-                <div className="bg-slate-900/80 p-3 rounded-lg border border-rose-500/40 flex items-center justify-between">
+                <div className="bg-slate-900/80 p-3  border border-rose-500/40 flex items-center justify-between">
                   <span className="text-rose-400 font-bold">POST /panic-flush</span>
                   <span className="text-slate-400">Instant emergency flush of iptables rules</span>
                 </div>
               </div>
             </div>
 
-            <div className="glass-panel p-5 rounded-xl border border-slate-800 bg-cyber-card/40 space-y-2">
+            <div className="glass-panel p-5  border border-slate-800 bg-cyber-card/40 space-y-2">
               <h4 className="font-mono text-xs font-bold text-white uppercase">Observability & Monitoring</h4>
               <p className="text-slate-400 text-xs font-mono">
                 Integrated Grafana 6-dashboard suite + Prometheus metrics endpoint at <code className="text-emerald-400">/metrics</code>.

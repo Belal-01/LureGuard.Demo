@@ -162,7 +162,7 @@ export const TerminalWindow: React.FC<TerminalWindowProps> = ({
   return (
     <div className="w-full space-y-3 text-left dir-ltr">
       {/* Preset Action Buttons Header Bar */}
-      <div className="glass-panel p-3 rounded-xl border border-slate-800 bg-cyber-card/60 flex flex-wrap items-center justify-between gap-2">
+      <div className="glass-panel p-3  border border-slate-800 bg-cyber-card/60 flex flex-wrap items-center justify-between gap-2">
         <div className="flex flex-wrap items-center gap-2">
           <span className="font-mono text-xs text-slate-400 font-bold mr-1">SCENARIO:</span>
           {ATTACK_SCENARIOS.map((sc) => {
@@ -172,7 +172,7 @@ export const TerminalWindow: React.FC<TerminalWindowProps> = ({
                 key={sc.id}
                 disabled={isSimulating}
                 onClick={() => handleTriggerScenario(sc.id)}
-                className={`px-3 py-1.5 rounded-lg font-mono text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                className={`px-3 py-1.5  font-mono text-xs font-semibold transition-all flex items-center gap-1.5 ${
                   isActive
                     ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 shadow-[0_0_15px_rgba(52,211,153,0.2)] glow-border-emerald'
                     : 'bg-slate-900/80 hover:bg-slate-800 text-slate-300 border border-slate-700'
@@ -187,7 +187,7 @@ export const TerminalWindow: React.FC<TerminalWindowProps> = ({
 
         <button
           onClick={() => xtermRef.current?.clear()}
-          className="p-1.5 rounded-lg bg-slate-950/60 hover:bg-slate-900 text-slate-400 hover:text-rose-400 border border-slate-800 transition-colors"
+          className="p-1.5  bg-slate-950/60 hover:bg-slate-900 text-slate-400 hover:text-rose-400 border border-slate-800 transition-colors"
           title="Clear Terminal Output"
         >
           <Trash2 className="w-3.5 h-3.5" />
@@ -195,7 +195,7 @@ export const TerminalWindow: React.FC<TerminalWindowProps> = ({
       </div>
 
       {/* Embedded Terminal Container (macOS / Linux Window Top Bar) */}
-      <div className="glass-panel rounded-xl border border-slate-800/90 overflow-hidden shadow-[0_0_40px_rgba(8,11,16,0.9)] glow-border-emerald">
+      <div className="glass-panel  border border-slate-800/90 overflow-hidden shadow-[0_0_40px_rgba(8,11,16,0.9)] glow-border-emerald">
         {/* Top Header Bar */}
         <div className="bg-[#080B12] px-4 py-2.5 border-b border-slate-800/80 flex items-center justify-between">
           <div className="flex items-center gap-2">

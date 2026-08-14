@@ -24,6 +24,8 @@ import {
   Lock,
   Eye,
   Network,
+  MessageSquare,
+  BookOpen,
 } from 'lucide-react';
 import { SectionHeader } from './SectionHeader';
 import { motion, AnimatePresence } from 'motion/react';
@@ -208,12 +210,12 @@ function StatCard({
 }) {
   const t = TONE[tone] || TONE.cyan;
   return (
-    <div className="rounded-xl border border-slate-200/80 dark:border-[#1a222d] bg-slate-100/80 dark:bg-[#0d1117] p-4 flex flex-col gap-2 transition-colors duration-300">
+    <div className=" border border-slate-200/80 dark:border-[#1a222d] bg-slate-100/80 dark:bg-[#0d1117] p-4 flex flex-col gap-2 transition-colors duration-300">
       <div className="flex items-center justify-between">
         <span className="text-[10px] font-mono tracking-[0.14em] text-slate-500 dark:text-[#6b7686] uppercase">
           {label}
         </span>
-        <div className={`p-1.5 rounded-lg ${t.chipBg} ${t.text}`}>
+        <div className={`p-1.5  ${t.chipBg} ${t.text}`}>
           <Icon className="w-3.5 h-3.5" />
         </div>
       </div>
@@ -269,7 +271,7 @@ function BarGroup({
     return () => clearTimeout(t);
   }, [active]);
   return (
-    <div className="rounded-xl border border-slate-200/80 dark:border-[#212832] bg-slate-100/80 dark:bg-[#0d1117] p-4 transition-colors duration-300">
+    <div className=" border border-slate-200/80 dark:border-[#212832] bg-slate-100/80 dark:bg-[#0d1117] p-4 transition-colors duration-300">
       <h4 className="text-[11px] font-mono tracking-[0.14em] text-slate-500 dark:text-[#6b7686] uppercase mb-3">{title}</h4>
       <div className="space-y-3">
         {items.map((it) => {
@@ -331,7 +333,7 @@ function EventFeed({
   }, [active, pool, max]);
 
   return (
-    <div className="rounded-xl border border-slate-200/80 dark:border-[#212832] bg-slate-100/80 dark:bg-[#0d1117] overflow-hidden transition-colors duration-300">
+    <div className=" border border-slate-200/80 dark:border-[#212832] bg-slate-100/80 dark:bg-[#0d1117] overflow-hidden transition-colors duration-300">
       <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-200/80 dark:border-[#1a2029]">
         <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400 animate-pulse" />
         <span className="text-[10px] font-mono tracking-[0.16em] text-cyan-600 dark:text-cyan-400 uppercase font-semibold">Live</span>
@@ -380,7 +382,7 @@ function AgentList({ active }: { active: boolean }) {
   useTick(active, 1000);
   const [lastSeen] = useState(() => agents.map(() => Date.now() - randInt(0, 4000)));
   return (
-    <div className="rounded-xl border border-slate-200/80 dark:border-[#212832] bg-slate-100/80 dark:bg-[#0d1117] divide-y divide-slate-200/80 dark:divide-[#161c26] overflow-hidden transition-colors duration-300">
+    <div className=" border border-slate-200/80 dark:border-[#212832] bg-slate-100/80 dark:bg-[#0d1117] divide-y divide-slate-200/80 dark:divide-[#161c26] overflow-hidden transition-colors duration-300">
       {agents.map((a, i) => (
         <div key={a.name} className="px-4 py-2.5 flex items-center gap-3">
           <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400 animate-pulse" />
@@ -406,7 +408,7 @@ function ProbeList() {
     { name: 'Web Honeypot', count: 1 },
   ];
   return (
-    <div className="rounded-xl border border-slate-200/80 dark:border-[#212832] bg-slate-100/80 dark:bg-[#0d1117] p-4 space-y-2.5 transition-colors duration-300">
+    <div className=" border border-slate-200/80 dark:border-[#212832] bg-slate-100/80 dark:bg-[#0d1117] p-4 space-y-2.5 transition-colors duration-300">
       <h4 className="text-[11px] font-mono tracking-[0.14em] text-slate-500 dark:text-[#6b7686] uppercase mb-1">Active Probes</h4>
       {probes.map((p) => (
         <div key={p.name} className="flex items-center justify-between">
@@ -448,7 +450,7 @@ function InvestigationTimeline({ active }: { active: boolean }) {
   }, [active]);
 
   return (
-    <div className="rounded-xl border border-slate-200/80 dark:border-[#212832] bg-slate-100/80 dark:bg-[#0d1117] p-4 transition-colors duration-300">
+    <div className=" border border-slate-200/80 dark:border-[#212832] bg-slate-100/80 dark:bg-[#0d1117] p-4 transition-colors duration-300">
       <h4 className="text-[11px] font-mono tracking-[0.14em] text-slate-500 dark:text-[#6b7686] uppercase mb-4">Attack Chain</h4>
       <div>
         {steps.map((s, i) => {
@@ -481,7 +483,7 @@ function IOCList() {
     { label: 'Target', value: 'db-server:2223' },
   ];
   return (
-    <div className="rounded-xl border border-slate-200/80 dark:border-[#212832] bg-slate-100/80 dark:bg-[#0d1117] p-4 space-y-2.5 transition-colors duration-300">
+    <div className=" border border-slate-200/80 dark:border-[#212832] bg-slate-100/80 dark:bg-[#0d1117] p-4 space-y-2.5 transition-colors duration-300">
       <h4 className="text-[11px] font-mono tracking-[0.14em] text-slate-500 dark:text-[#6b7686] uppercase mb-1">Related Indicators</h4>
       {iocs.map((x) => (
         <div key={x.label} className="flex items-center justify-between text-xs font-mono">
@@ -525,7 +527,7 @@ function TerminalLog({ active }: { active: boolean }) {
   }, [active]);
 
   return (
-    <div className="rounded-xl border border-slate-300 dark:border-[#212832] bg-slate-950 dark:bg-[#0a0d12] overflow-hidden transition-colors duration-300">
+    <div className=" border border-slate-300 dark:border-[#212832] bg-slate-950 dark:bg-[#0a0d12] overflow-hidden transition-colors duration-300">
       <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-800 dark:border-[#1a2029] flex-wrap bg-slate-900/90 dark:bg-[#10141b]">
         {sources.map((s) => (
           <span
@@ -559,7 +561,7 @@ function HostList({ active }: { active: boolean }) {
   ];
   useTick(active, 1000);
   return (
-    <div className="rounded-xl border border-slate-200/80 dark:border-[#212832] bg-slate-100/80 dark:bg-[#0d1117] divide-y divide-slate-200/80 dark:divide-[#161c26] overflow-hidden transition-colors duration-300">
+    <div className=" border border-slate-200/80 dark:border-[#212832] bg-slate-100/80 dark:bg-[#0d1117] divide-y divide-slate-200/80 dark:divide-[#161c26] overflow-hidden transition-colors duration-300">
       {hosts.map((h) => {
         const t = TONE[h.status] || TONE.cyan;
         return (
@@ -593,7 +595,7 @@ function ContainerGrid() {
       {pods.map((p) => {
         const t = TONE[statusTone[p.status]] || TONE.cyan;
         return (
-          <div key={p.name} className="rounded-lg border border-slate-200/80 dark:border-[#212832] bg-slate-100/80 dark:bg-[#0d1117] p-3 transition-colors duration-300">
+          <div key={p.name} className=" border border-slate-200/80 dark:border-[#212832] bg-slate-100/80 dark:bg-[#0d1117] p-3 transition-colors duration-300">
             <div className="flex items-center justify-between mb-1.5">
               <span className={`w-1.5 h-1.5 rounded-full ${t.dot}`} />
               <span className={`text-[9px] font-mono font-semibold ${t.text}`}>{p.status}</span>
@@ -722,7 +724,7 @@ function NetworkThroughputChart({ active }: { active: boolean }) {
   const currentRate = dataPoints[dataPoints.length - 1]?.toFixed(2) || '95.37';
 
   return (
-    <div className="rounded-xl border border-slate-200/80 dark:border-[#212832] bg-slate-100/80 dark:bg-[#0d1117] p-4 sm:p-5 transition-colors duration-300">
+    <div className=" border border-slate-200/80 dark:border-[#212832] bg-slate-100/80 dark:bg-[#0d1117] p-4 sm:p-5 transition-colors duration-300">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <Network className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
@@ -946,7 +948,7 @@ function FleetCpuLoadChart({ active }: { active: boolean }) {
   const currentRate = dataPoints[dataPoints.length - 1]?.toFixed(1) || '32.4';
 
   return (
-    <div className="rounded-xl border border-slate-200/80 dark:border-[#212832] bg-slate-100/80 dark:bg-[#0d1117] p-4 sm:p-5 transition-colors duration-300">
+    <div className=" border border-slate-200/80 dark:border-[#212832] bg-slate-100/80 dark:bg-[#0d1117] p-4 sm:p-5 transition-colors duration-300">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <Cpu className="w-4 h-4 text-amber-600 dark:text-amber-400" />
@@ -1177,11 +1179,173 @@ function LiveClock({ active }: { active: boolean }) {
   );
 }
 
+const OPENCODE_EXCHANGES = [
+  {
+    prompt: 'Read skills/triage.md and triage alerts from the last 2 hours',
+    response: '3 SSH brute-force bursts contained · 1 credential stuffing sweep flagged for review',
+  },
+  {
+    prompt: 'Enrich the IP behind the last blocked session',
+    response: '185.220.101.5 → TOR exit node · AbuseIPDB score 98 · 214 reports',
+  },
+  {
+    prompt: 'Draft an incident report for #9C347A',
+    response: 'Report generated · attack chain, IOCs, and remediation steps attached',
+  },
+];
+
+/* Terminal-style live chat: types a prompt, then the agent's reply,
+   pauses, then cycles to the next example — loops while `active`. */
+function OpencodeChat({ active }: { active: boolean }) {
+  const [exchangeIndex, setExchangeIndex] = useState(0);
+  const [promptLen, setPromptLen] = useState(0);
+  const [responseLen, setResponseLen] = useState(0);
+  const [showResponse, setShowResponse] = useState(false);
+
+  useEffect(() => {
+    if (!active) return;
+    let cancelled = false;
+    const timers: ReturnType<typeof setTimeout>[] = [];
+    const exchange = OPENCODE_EXCHANGES[exchangeIndex];
+
+    setPromptLen(0);
+    setResponseLen(0);
+    setShowResponse(false);
+
+    let i = 0;
+    const typePrompt = () => {
+      const t = setTimeout(() => {
+        if (cancelled) return;
+        i++;
+        setPromptLen(i);
+        if (i < exchange.prompt.length) typePrompt();
+        else timers.push(setTimeout(startResponse, 500));
+      }, 22);
+      timers.push(t);
+    };
+
+    const startResponse = () => {
+      if (cancelled) return;
+      setShowResponse(true);
+      let j = 0;
+      const typeResponse = () => {
+        const t = setTimeout(() => {
+          if (cancelled) return;
+          j++;
+          setResponseLen(j);
+          if (j < exchange.response.length) typeResponse();
+          else
+            timers.push(
+              setTimeout(() => {
+                if (cancelled) return;
+                setExchangeIndex((idx) => (idx + 1) % OPENCODE_EXCHANGES.length);
+              }, 2200)
+            );
+        }, 16);
+        timers.push(t);
+      };
+      typeResponse();
+    };
+
+    typePrompt();
+
+    return () => {
+      cancelled = true;
+      timers.forEach(clearTimeout);
+    };
+  }, [active, exchangeIndex]);
+
+  const exchange = OPENCODE_EXCHANGES[exchangeIndex];
+
+  return (
+    <div className="border border-slate-200/80 dark:border-[#212832] bg-slate-100/80 dark:bg-[#0a0d12] overflow-hidden transition-colors duration-300">
+      <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-200/80 dark:border-[#1a2029]">
+        <span className="w-2.5 h-2.5 rounded-full bg-rose-400/70 dark:bg-[#4a3038]" />
+        <span className="w-2.5 h-2.5 rounded-full bg-amber-400/70 dark:bg-[#4a4230]" />
+        <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/70 dark:bg-[#2e4a38]" />
+        <span className="ml-2 text-[10px] font-mono text-slate-500 dark:text-[#6b7686] tracking-wider">opencode</span>
+      </div>
+      <div className="p-4 font-mono text-[12.5px] leading-relaxed min-h-[180px] text-slate-800 dark:text-slate-200">
+        <div className="text-slate-500 dark:text-[#4d5766]">$ opencode</div>
+        <div className="mt-2 flex items-start gap-2">
+          <span className="text-blue-600 dark:text-[#6c93f5] flex-shrink-0">opencode&gt;</span>
+          <span className="text-slate-800 dark:text-[#c3cad6]">
+            {exchange.prompt.slice(0, promptLen)}
+            {promptLen < exchange.prompt.length && (
+              <span className="inline-block w-[6px] h-[12px] bg-emerald-500 dark:bg-[#35d399] ml-0.5 align-middle animate-pulse" />
+            )}
+          </span>
+        </div>
+        {showResponse && (
+          <div className="mt-3 flex items-start gap-2">
+            <span className="text-emerald-600 dark:text-[#35d399] flex-shrink-0 font-bold">[agent]</span>
+            <span className="text-slate-600 dark:text-[#8a93a3]">
+              {exchange.response.slice(0, responseLen)}
+              {responseLen < exchange.response.length && (
+                <span className="inline-block w-[6px] h-[12px] bg-emerald-500 dark:bg-[#35d399] ml-0.5 align-middle animate-pulse" />
+              )}
+            </span>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* Static-ish list of the skills/*.md files opencode can invoke */
+function SkillsList() {
+  const skills = [
+    { name: 'triage.md', desc: 'Correlates alerts, ranks by severity' },
+    { name: 'enrich.md', desc: 'IOC lookups · VirusTotal, AbuseIPDB' },
+    { name: 'contain.md', desc: 'Blocks IPs, syncs firewall rules' },
+    { name: 'report.md', desc: 'Generates incident write-ups' },
+  ];
+  return (
+    <div className="border border-slate-200/80 dark:border-[#212832] bg-slate-100/80 dark:bg-[#0d1117] divide-y divide-slate-200/80 dark:divide-[#161c26] overflow-hidden transition-colors duration-300">
+      <div className="px-4 py-3 border-b border-slate-200/80 dark:border-[#1a2029]">
+        <h4 className="text-[11px] font-mono tracking-[0.14em] text-slate-500 dark:text-[#6b7686] uppercase">Skills Library</h4>
+      </div>
+      {skills.map((s) => (
+        <div key={s.name} className="px-4 py-3 flex items-center gap-3">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-[#35d399] animate-pulse flex-shrink-0" />
+          <div className="min-w-0">
+            <span className="text-xs font-mono text-slate-800 dark:text-[#c3cad6] block">{s.name}</span>
+            <span className="text-[10px] font-mono text-slate-500 dark:text-[#4d5766] block truncate">{s.desc}</span>
+          </div>
+          <span className="ml-auto text-[9px] font-mono text-emerald-600 dark:text-[#35d399] font-bold flex-shrink-0">READY</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* The tab panel itself — same shape as SocPanel / AgentPanel / etc. */
+function OpencodePanel({ active }: { active: boolean }) {
+  const sessions = useLiveNumber(6, { min: 3, max: 10, step: 1, active, intervalMs: 4000 });
+  const commands = useLiveNumber(47, { min: 42, max: 55, step: 1, active, intervalMs: 3000 });
+
+  return (
+    <div className="space-y-5">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <StatCard icon={MessageSquare} label="Active Sessions" value={sessions} tone="green" />
+        <StatCard icon={BookOpen} label="Skills Loaded" value={12} tone="blue" />
+        <StatCard icon={Zap} label="Avg Response" value="1.8" suffix="s" tone="amber" />
+        <StatCard icon={Terminal} label="Commands Today" value={commands} tone="green" />
+      </div>
+      <div className="grid lg:grid-cols-2 gap-4">
+        <OpencodeChat active={active} />
+        <SkillsList />
+      </div>
+    </div>
+  );
+}
+
 /* ============================================================
    Tab registry
    ============================================================ */
 
 const TABS = [
+  { id: 'opencode', label: 'opencode CLI', icon: MessageSquare },
   { id: 'soc', label: 'SOC Overview', icon: Shield },
   { id: 'agent', label: 'Agent Activity', icon: Zap },
   { id: 'posture', label: 'Security Posture', icon: ShieldCheck },
@@ -1198,7 +1362,7 @@ type TabId = (typeof TABS)[number]['id'];
    ============================================================ */
 
 export default function LureGuardDashboardShowcase() {
-  const [activeTab, setActiveTab] = useState<TabId>('soc');
+  const [activeTab, setActiveTab] = useState<TabId>('opencode');
   const [rootRef, visible] = useVisible<HTMLElement>();
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const [underline, setUnderline] = useState({ left: 0, width: 0 });
@@ -1264,13 +1428,13 @@ export default function LureGuardDashboardShowcase() {
             })}
           </div>
           <div
-            className="absolute bottom-0 h-[2px] bg-cyan-500 dark:bg-cyan-400 shadow-[0_0_8px_rgba(6,182,212,0.4)] transition-all duration-300 ease-out"
+            className="absolute bottom-0 h-[2px] bg-cyan-500 dark:bg-cyan-400  transition-all duration-300 ease-out"
             style={{ left: `${underline.left}px`, width: `${underline.width}px` }}
           />
         </div>
 
         {/* Dashboard window */}
-        <div className="rounded-2xl border border-slate-200/90 dark:border-[#212832] bg-white/95 dark:bg-[#0c0f15]/95 backdrop-blur-xl shadow-xl dark:shadow-2xl overflow-hidden transition-colors duration-300">
+        <div className=" border border-slate-200/90 dark:border-[#212832] bg-white/95 dark:bg-[#0c0f15]/95 backdrop-blur-xl  overflow-hidden transition-colors duration-300">
           <div className="flex items-center gap-2 px-5 py-3 border-b border-slate-200 dark:border-[#1a2029] bg-slate-100/90 dark:bg-[#0d1117]">
             <span className="w-2.5 h-2.5 rounded-full bg-rose-400/70 dark:bg-[#4a3038]" />
             <span className="w-2.5 h-2.5 rounded-full bg-amber-400/70 dark:bg-[#4a4230]" />
@@ -1296,6 +1460,7 @@ export default function LureGuardDashboardShowcase() {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.28, ease: 'easeOut' }}
               >
+                {activeTab === 'opencode' && <OpencodePanel active={visible} />}
                 {activeTab === 'soc' && <SocPanel active={visible} />}
                 {activeTab === 'agent' && <AgentPanel active={visible} />}
                 {activeTab === 'posture' && <PosturePanel active={visible} />}

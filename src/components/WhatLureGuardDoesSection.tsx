@@ -64,12 +64,12 @@ export const WhatLureGuardDoesSection: React.FC = () => {
   const [progress, setProgress] = useState<number>(0);
   const [isPaused, setIsPaused] = useState<boolean>(false);
 
-  // Auto-Rotating Progress Bar Timer (5 Seconds per tab)
+  // Auto-Rotating Progress Bar Timer (7 Seconds per tab)
   useEffect(() => {
     if (isPaused) return;
 
     const intervalTime = 40; // Update every 40ms
-    const totalDuration = 5000; // 5 seconds
+    const totalDuration = 7000; // 7 seconds (increased by 2s)
     const stepIncrement = (intervalTime / totalDuration) * 100;
 
     const timer = setInterval(() => {
@@ -127,14 +127,14 @@ export const WhatLureGuardDoesSection: React.FC = () => {
                 key={tab.id}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => handleTabClick(idx)}
-                className={`relative px-4 py-2.5 rounded-lg border transition-all duration-300 shrink-0 flex items-center gap-2 text-xs font-mono font-semibold tracking-wider cursor-pointer ${
+                className={`relative px-4 py-2.5  border transition-all duration-300 shrink-0 flex items-center gap-2 text-xs font-mono font-semibold tracking-wider cursor-pointer ${
                   isActive
-                    ? 'border-cyan-500/50 bg-cyan-50 dark:bg-cyan-950/20 text-cyan-950 dark:text-white shadow-sm dark:shadow-[0_0_20px_rgba(6,182,212,0.15)]'
+                    ? 'border-cyan-500/50 bg-cyan-50 dark:bg-cyan-950/20 text-cyan-950 dark:text-white '
                     : 'border-slate-200 dark:border-slate-800/90 bg-slate-100/70 dark:bg-slate-900/40 text-slate-600 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700 hover:text-slate-900 dark:hover:text-slate-200'
                 }`}
               >
                 {isActive ? (
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400 shadow-[0_0_8px_#22d3ee] animate-pulse" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400  animate-pulse" />
                 ) : (
                   <span className="w-1.5 h-1.5 rounded-full bg-slate-400 dark:bg-slate-600" />
                 )}
@@ -147,7 +147,7 @@ export const WhatLureGuardDoesSection: React.FC = () => {
         {/* Full-width track line with single progress bar resetting to 0% for each tab */}
         <div className="relative w-full h-[1px] bg-slate-200 dark:bg-slate-800/80 mt-1">
           <div
-            className="h-[2px] bg-gradient-to-r from-cyan-500 to-blue-500 shadow-[0_0_12px_rgba(6,182,212,0.8)] transition-all duration-75 ease-linear rounded-full"
+            className="h-[2px] bg-gradient-to-r from-cyan-500 to-blue-500  transition-all duration-75 ease-linear rounded-full"
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -197,7 +197,7 @@ export const WhatLureGuardDoesSection: React.FC = () => {
             <div className="pt-4">
               <a
                 href="#install"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-sans text-sm font-bold bg-slate-900 dark:bg-white hover:bg-slate-800 dark:hover:bg-slate-100 text-white dark:text-slate-950 transition-all duration-300 group shadow-md dark:shadow-[0_0_25px_rgba(255,255,255,0.15)] hover:shadow-lg dark:hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] transform hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 px-6 py-3  font-sans text-sm font-bold bg-slate-900 dark:bg-white hover:bg-slate-800 dark:hover:bg-slate-100 text-white dark:text-slate-950 transition-all duration-300 group  transform hover:-translate-y-0.5"
               >
                 <span>Get started</span>
                 <ArrowUpRight className="w-4 h-4 text-white dark:text-slate-950 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 stroke-[2.5]" />

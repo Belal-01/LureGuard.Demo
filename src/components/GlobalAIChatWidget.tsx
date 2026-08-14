@@ -110,11 +110,11 @@ export const GlobalAIChatWidget: React.FC = () => {
 
       {/* Fly-out Chat Modal Container (Anchored Bottom-Left) */}
       {isOpen && (
-        <div className="fixed bottom-20 left-6 z-50 w-80 sm:w-96 glass-panel rounded-2xl border border-blue-500/30 shadow-[0_0_50px_rgba(8,11,16,0.9)] glow-border-blue overflow-hidden flex flex-col h-[500px] animate-fadeIn">
+        <div className="fixed bottom-20 left-6 z-50 w-80 sm:w-96 glass-panel  border border-blue-500/30 shadow-[0_0_50px_rgba(8,11,16,0.9)] glow-border-blue overflow-hidden flex flex-col h-[500px] animate-fadeIn">
           {/* Header */}
           <div className="bg-slate-950/90 px-4 py-3 border-b border-slate-800/80 flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <div className="p-1.5 rounded-lg bg-blue-950/60 border border-blue-500/40 text-blue-400">
+              <div className="p-1.5  bg-blue-950/60 border border-blue-500/40 text-blue-400">
                 <Sparkles className="w-4 h-4" />
               </div>
               <div>
@@ -142,7 +142,7 @@ export const GlobalAIChatWidget: React.FC = () => {
                 className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}
               >
                 <div
-                  className={`max-w-[85%] p-3 rounded-xl leading-relaxed whitespace-pre-wrap ${
+                  className={`max-w-[85%] p-3  leading-relaxed whitespace-pre-wrap ${
                     msg.sender === 'user'
                       ? 'bg-blue-600 text-white font-medium rounded-br-none shadow-[0_0_15px_rgba(59,130,246,0.3)]'
                       : 'bg-slate-900/90 text-slate-200 border border-slate-800 rounded-bl-none font-mono text-[11px]'
@@ -160,7 +160,7 @@ export const GlobalAIChatWidget: React.FC = () => {
                       <button
                         key={idx}
                         onClick={() => handleSend(prompt)}
-                        className="w-full text-left text-[11px] font-mono px-3 py-1.5 rounded-lg bg-slate-900/80 hover:bg-blue-950/60 border border-slate-800 hover:border-blue-500/40 text-slate-300 hover:text-blue-400 transition-all flex items-center justify-between group"
+                        className="w-full text-left text-[11px] font-mono px-3 py-1.5  bg-slate-900/80 hover:bg-blue-950/60 border border-slate-800 hover:border-blue-500/40 text-slate-300 hover:text-blue-400 transition-all flex items-center justify-between group"
                       >
                         <span>{prompt}</span>
                         <ChevronRight className="w-3 h-3 text-slate-500 group-hover:text-blue-400 transition-colors" />
@@ -172,7 +172,7 @@ export const GlobalAIChatWidget: React.FC = () => {
             ))}
 
             {isTyping && (
-              <div className="flex items-center gap-2 text-slate-400 text-xs font-mono bg-slate-900/80 p-2.5 rounded-xl border border-slate-800 w-fit">
+              <div className="flex items-center gap-2 text-slate-400 text-xs font-mono bg-slate-900/80 p-2.5  border border-slate-800 w-fit">
                 <RefreshCw className="w-3 h-3 animate-spin text-blue-400" />
                 <span>Assistant is thinking...</span>
               </div>
@@ -193,12 +193,12 @@ export const GlobalAIChatWidget: React.FC = () => {
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="Ask about architecture, sandbox, deploy..."
-              className="flex-1 bg-slate-900/80 border border-slate-800 text-slate-200 placeholder-slate-500 text-xs font-mono px-3 py-2 rounded-lg focus:outline-none focus:border-blue-500/50"
+              className="flex-1 bg-slate-900/80 border border-slate-800 text-slate-200 placeholder-slate-500 text-xs font-mono px-3 py-2  focus:outline-none focus:border-blue-500/50"
             />
             <button
               type="submit"
               disabled={!inputValue.trim()}
-              className="p-2 rounded-lg bg-blue-600 text-white hover:bg-blue-500 disabled:opacity-40 disabled:hover:bg-blue-600 transition-all"
+              className="p-2  bg-blue-600 text-white hover:bg-blue-500 disabled:opacity-40 disabled:hover:bg-blue-600 transition-all"
               aria-label="Send Message"
             >
               <Send className="w-3.5 h-3.5" />

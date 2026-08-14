@@ -80,7 +80,7 @@ export const LiveTerminalPreview: React.FC = () => {
   }, [logs]);
 
   return (
-    <div className="rounded-xl h-full backdrop-blur-sm  border border-slate-800/90 overflow-hidden shadow-[0_0_30px_rgba(8,11,16,0.9)] glow-border-cyan w-full text-left dir-ltr">
+    <div className=" h-full backdrop-blur-sm  border border-slate-800/90 overflow-hidden  glow-border-cyan w-full text-left dir-ltr">
       {/* Top Window Header Bar */}
       <div className="bg-slate-950/90 px-4 py-2.5 border-b border-slate-800/80 flex items-center justify-between">
         <div className=" p-4 flex items-center gap-2">

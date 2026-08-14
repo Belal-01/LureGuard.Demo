@@ -32,7 +32,7 @@ export const ThemeToggle: React.FC = () => {
     <button
       onClick={toggleTheme}
       type="button"
-      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl font-mono text-xs font-semibold transition-all duration-300 border bg-slate-200/80 dark:bg-slate-900/80 border-slate-300/80 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 hover:border-cyan-500/50 dark:hover:border-cyan-500/50 shadow-sm cursor-pointer select-none"
+      className="inline-flex items-center gap-2 px-3 py-1.5  font-mono text-xs font-semibold transition-all duration-300 border bg-slate-200/80 dark:bg-slate-900/80 border-slate-300/80 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 hover:border-cyan-500/50 dark:hover:border-cyan-500/50  cursor-pointer select-none"
       title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
       aria-label="Toggle Light and Dark Mode"
     >

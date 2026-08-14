@@ -14,7 +14,7 @@ export const AnimatedHeroContent: React.FC = () => {
         <img
           src="/images/logo.png"
           alt="LureGuard Logo"
-          className="w-28 h-16 sm:w-60 sm:h-40 md:w-[600px] md:h-[200px] object-contain drop-shadow-[0_0_25px_rgba(6,182,212,0.4)] hover:scale-105 transition-all duration-300"
+          className="w-28 h-16 sm:w-60 sm:h-40 md:w-[600px] md:h-[200px] object-contain  hover:scale-105 transition-all duration-300"
         />
       </motion.div>
 
@@ -26,7 +26,7 @@ export const AnimatedHeroContent: React.FC = () => {
         className="text-4xl sm:text-5xl md:text-6xl font-black font-mono text-slate-900 dark:text-white leading-[1.1] tracking-tight max-w-6xl mx-auto mb-6 transition-colors"
       >
         The Preemptive Cyber MDR Leader That{' '}
-        <span className="bg-gradient-to-r from-cyan-600 via-teal-600 to-blue-600 dark:from-cyan-400 dark:via-teal-300 dark:to-blue-500 bg-clip-text text-transparent glow-text-cyan">
+        <span className="text-cyan-400  ">
           Outpaces Attackers
         </span>
       </motion.h1>
@@ -53,7 +53,7 @@ export const AnimatedHeroContent: React.FC = () => {
           whileHover={{ scale: 1.03, y: -2 }}
           whileTap={{ scale: 0.97 }}
           href="#install"
-          className="px-8 py-3 rounded-xl font-mono text-sm sm:text-base font-bold bg-cyan-600 dark:bg-cyan-400 hover:bg-cyan-500 dark:hover:bg-cyan-300 text-white dark:text-slate-950 transition-colors duration-300 flex items-center gap-2.5 group shadow-md hover:shadow-cyan-500/20"
+          className="px-8 py-3  font-mono text-sm sm:text-base font-bold bg-cyan-600 dark:bg-cyan-400 hover:bg-cyan-500 dark:hover:bg-cyan-300 text-white dark:text-slate-950 transition-colors duration-300 flex items-center gap-2.5 group "
         >
           <span>GET STARTED</span>
           <svg
@@ -76,7 +76,7 @@ export const AnimatedHeroContent: React.FC = () => {
           whileHover={{ scale: 1.03, y: -2 }}
           whileTap={{ scale: 0.97 }}
           href="/docs"
-          className="px-8 py-3 rounded-xl font-mono text-sm sm:text-base font-semibold bg-white dark:bg-slate-900/90 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700/80 hover:border-cyan-500/50 transition-colors duration-300 flex items-center gap-2.5 shadow-sm"
+          className="px-8 py-3  font-mono text-sm sm:text-base font-semibold bg-white dark:bg-slate-900/90 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700/80 hover:border-cyan-500/50 transition-colors duration-300 flex items-center gap-2.5 shadow-sm"
         >
           <span>READ DOCS</span>
           <svg

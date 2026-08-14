@@ -39,6 +39,7 @@ export const InstallSection: React.FC = () => {
       }
       await new Promise((r) => setTimeout(r, 160));
     }
+    await new Promise((r) => setTimeout(r, 2000)); // 2s hold duration
     setShowCard1Comment(true);
   };
 
@@ -64,9 +65,10 @@ export const InstallSection: React.FC = () => {
 
     const checks = ['Docker daemon', 'Postgres', 'Wazuh', 'Core API', 'opencode MCP'];
     for (let k = 0; k < checks.length; k++) {
-      await new Promise((r) => setTimeout(r, 140));
+      await new Promise((r) => setTimeout(r, 200));
       setCard2Checks((prev) => [...prev, checks[k]]);
     }
+    await new Promise((r) => setTimeout(r, 2000)); // 2s hold duration
   };
 
   const runCard3 = async () => {
@@ -88,6 +90,7 @@ export const InstallSection: React.FC = () => {
     }
     await new Promise((r) => setTimeout(r, 240));
     setShowCard3Ai(true);
+    await new Promise((r) => setTimeout(r, 2000)); // 2s hold duration
   };
 
   return (
@@ -120,7 +123,7 @@ export const InstallSection: React.FC = () => {
       </motion.div>
 
       {/* 3 Step Cards Grid with Staggered Motion */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 ">
         {/* STEP 1 CARD */}
         <motion.div
           initial={{ opacity: 0, y: 35 }}
@@ -133,9 +136,9 @@ export const InstallSection: React.FC = () => {
           }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          whileHover={{ y: -6, transition: { duration: 0.25 } }}
+          whileHover={{ transition: { duration: 0.25 } }}
           onMouseEnter={runCard1}
-          className="group relative rounded-2xl bg-white/95 dark:bg-[#141419]/95 border border-slate-200 dark:border-[#172033] hover:border-cyan-500/60 dark:hover:border-[#06b6d4]/60 transition-all duration-300 overflow-hidden shadow-xl dark:shadow-2xl backdrop-blur-xl cursor-pointer"
+          className="group relative  bg-white/95 dark:bg-[#141419]/95 border border-slate-200 dark:border-[#172033] hover:border-cyan-500/60 dark:hover:border-[#06b6d4]/60 transition-all duration-300 overflow-hidden  backdrop-blur-xl cursor-pointer"
         >
           <div className="flex items-center justify-between px-5 pt-4 font-mono text-xs text-slate-500 dark:text-[#7e8eb0] tracking-wider uppercase">
             <span>
@@ -150,7 +153,7 @@ export const InstallSection: React.FC = () => {
           </div>
 
           {/* Terminal Box */}
-          <div className="mx-4 mt-3.5 bg-slate-950 dark:bg-[#0a0d12] border border-slate-800 dark:border-[#161e31] rounded-xl h-48 overflow-hidden flex flex-col font-mono text-xs">
+          <div className="mx-4 mt-3.5 bg-slate-950 dark:bg-[#0a0d12] border border-slate-800 dark:border-[#161e31]  h-48 overflow-hidden flex flex-col font-mono text-xs">
             <div className="flex items-center gap-1.5 px-3 py-2 bg-slate-900/90 dark:bg-[#0d1117] border-b border-slate-800 dark:border-[#161e31]">
               <span className="w-2 h-2 rounded-full bg-rose-900/80" />
               <span className="w-2 h-2 rounded-full bg-amber-900/80" />
@@ -186,7 +189,7 @@ export const InstallSection: React.FC = () => {
 
           {/* Card Body */}
           <div className="p-5 pt-4">
-            <div className="w-9 h-9 rounded-xl bg-cyan-50 dark:bg-[#111827] border border-cyan-200/80 dark:border-[#1e293b] text-cyan-600 dark:text-[#22d3ee] flex items-center justify-center mb-3 shadow-xs group-hover:border-cyan-500/40 group-hover:scale-105 transition-all duration-300">
+            <div className="w-9 h-9  bg-cyan-50 dark:bg-[#111827] border border-cyan-200/80 dark:border-[#1e293b] text-cyan-600 dark:text-[#22d3ee] flex items-center justify-center mb-3  group-hover:border-cyan-500/40 group-hover:scale-105 transition-all duration-300">
               <GitBranch className="w-4.5 h-4.5 stroke-[2]" />
             </div>
             <h3 className="text-lg font-sans font-bold text-slate-900 dark:text-white mb-1.5">
@@ -214,9 +217,9 @@ export const InstallSection: React.FC = () => {
           }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.6, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          whileHover={{ y: -6, transition: { duration: 0.25 } }}
+          whileHover={{ transition: { duration: 0.25 } }}
           onMouseEnter={runCard2}
-          className="group relative rounded-2xl bg-white/95 dark:bg-[#141419]/95 border border-slate-200 dark:border-[#172033] hover:border-amber-500/60 dark:hover:border-[#fbbf24]/60 transition-all duration-300 overflow-hidden shadow-xl dark:shadow-2xl backdrop-blur-xl cursor-pointer"
+          className="group relative  bg-white/95 dark:bg-[#141419]/95 border border-slate-200 dark:border-[#172033] hover:border-amber-500/60 dark:hover:border-[#fbbf24]/60 transition-all duration-300 overflow-hidden  backdrop-blur-xl cursor-pointer"
         >
           <div className="flex items-center justify-between px-5 pt-4 font-mono text-xs text-slate-500 dark:text-[#7e8eb0] tracking-wider uppercase">
             <span>
@@ -231,7 +234,7 @@ export const InstallSection: React.FC = () => {
           </div>
 
           {/* Terminal Box */}
-          <div className="mx-4 mt-3.5 bg-slate-950 dark:bg-[#0a0d12] border border-slate-800 dark:border-[#161e31] rounded-xl h-48 overflow-hidden flex flex-col font-mono text-xs">
+          <div className="mx-4 mt-3.5 bg-slate-950 dark:bg-[#0a0d12] border border-slate-800 dark:border-[#161e31]  h-48 overflow-hidden flex flex-col font-mono text-xs">
             <div className="flex items-center gap-1.5 px-3 py-2 bg-slate-900/90 dark:bg-[#0d1117] border-b border-slate-800 dark:border-[#161e31]">
               <span className="w-2 h-2 rounded-full bg-rose-900/80" />
               <span className="w-2 h-2 rounded-full bg-amber-900/80" />
@@ -273,7 +276,7 @@ export const InstallSection: React.FC = () => {
 
           {/* Card Body */}
           <div className="p-5 pt-4">
-            <div className="w-9 h-9 rounded-xl bg-amber-50 dark:bg-[#181611] border border-amber-200/80 dark:border-[#2d2516] text-amber-600 dark:text-[#fbbf24] flex items-center justify-center mb-3 shadow-xs group-hover:border-amber-500/40 group-hover:scale-105 transition-all duration-300">
+            <div className="w-9 h-9  bg-amber-50 dark:bg-[#181611] border border-amber-200/80 dark:border-[#2d2516] text-amber-600 dark:text-[#fbbf24] flex items-center justify-center mb-3  group-hover:border-amber-500/40 group-hover:scale-105 transition-all duration-300">
               <Sparkles className="w-4.5 h-4.5 stroke-[2]" />
             </div>
             <h3 className="text-lg font-sans font-bold text-slate-900 dark:text-white mb-1.5">
@@ -301,9 +304,9 @@ export const InstallSection: React.FC = () => {
           }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          whileHover={{ y: -6, transition: { duration: 0.25 } }}
+          whileHover={{ transition: { duration: 0.25 } }}
           onMouseEnter={runCard3}
-          className="group relative rounded-2xl bg-white/95 dark:bg-[#141419]/95 border border-slate-200 dark:border-[#172033] hover:border-emerald-500/60 dark:hover:border-[#34d399]/60 transition-all duration-300 overflow-hidden shadow-xl dark:shadow-2xl backdrop-blur-xl cursor-pointer"
+          className="group relative  bg-white/95 dark:bg-[#141419]/95 border border-slate-200 dark:border-[#172033] hover:border-emerald-500/60 dark:hover:border-[#34d399]/60 transition-all duration-300 overflow-hidden   backdrop-blur-xl cursor-pointer"
         >
           <div className="flex items-center justify-between px-5 pt-4 font-mono text-xs text-slate-500 dark:text-[#7e8eb0] tracking-wider uppercase">
             <span>
@@ -320,7 +323,7 @@ export const InstallSection: React.FC = () => {
           </div>
 
           {/* Terminal Box */}
-          <div className="mx-4 mt-3.5 bg-slate-950 dark:bg-[#0a0d12] border border-slate-800 dark:border-[#161e31] rounded-xl h-48 overflow-hidden flex flex-col font-mono text-xs">
+          <div className="mx-4 mt-3.5 bg-slate-950 dark:bg-[#0a0d12] border border-slate-800 dark:border-[#161e31]  h-48 overflow-hidden flex flex-col font-mono text-xs">
             <div className="flex items-center gap-1.5 px-3 py-2 bg-slate-900/90 dark:bg-[#0d1117] border-b border-slate-800 dark:border-[#161e31]">
               <span className="w-2 h-2 rounded-full bg-rose-900/80" />
               <span className="w-2 h-2 rounded-full bg-amber-900/80" />
@@ -368,7 +371,7 @@ export const InstallSection: React.FC = () => {
 
           {/* Card Body */}
           <div className="p-5 pt-4">
-            <div className="w-9 h-9 rounded-xl bg-emerald-50 dark:bg-[#0c1a16] border border-emerald-200/80 dark:border-[#133027] text-emerald-600 dark:text-[#34d399] flex items-center justify-center mb-3 shadow-xs group-hover:border-emerald-500/40 group-hover:scale-105 transition-all duration-300">
+            <div className="w-9 h-9  bg-emerald-50 dark:bg-[#0c1a16] border border-emerald-200/80 dark:border-[#133027] text-emerald-600 dark:text-[#34d399] flex items-center justify-center mb-3  group-hover:border-emerald-500/40 group-hover:scale-105 transition-all duration-300">
               <Activity className="w-4.5 h-4.5 stroke-[2]" />
             </div>
             <h3 className="text-lg font-sans font-bold text-slate-900 dark:text-white mb-1.5">

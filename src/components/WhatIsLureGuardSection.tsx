@@ -32,7 +32,7 @@ export const WhatIsLureGuardSection: React.FC = () => {
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
         viewport={{ once: true, margin: '-60px' }}
         transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full max-w-4xl rounded-2xl bg-white/95 dark:bg-[#141419]/95 border border-slate-200 dark:border-[#172033] shadow-xl dark:shadow-2xl overflow-hidden backdrop-blur-xl text-left transition-all hover:border-cyan-500/30 dark:hover:border-cyan-500/30"
+        className="w-full max-w-4xl  bg-white/95 dark:bg-[#141419]/95 border border-slate-200 dark:border-[#172033] overflow-hidden backdrop-blur-xl text-left transition-all hover:border-cyan-500/30 dark:hover:border-cyan-500/30"
       >
         {/* macOS / Linux Style Top Bar */}
         <div className="flex items-center justify-between px-4 sm:px-6 py-3 bg-slate-100/90 dark:bg-[#0d1117] border-b border-slate-200 dark:border-[#161e31] select-none transition-colors">

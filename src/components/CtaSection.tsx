@@ -23,9 +23,9 @@ export const CtaSection: React.FC = () => {
         <GlowLight
           color="#06b6d4"
           position="top-1/2 left-1/2"
-          size="w-[350px] h-[350px] sm:w-[550px] sm:h-[350px]"
+          size="w-[550px] h-[200px] sm:w-[850px] sm:h-[200px]"
           blur="blur-[120px]"
-          opacity="opacity-40 dark:opacity-50"
+          opacity="opacity-50 dark:opacity-50"
           offset="-translate-x-1/2 -translate-y-1/2"
           className="-z-10 pointer-events-none"
           zIndex={0}
@@ -63,7 +63,7 @@ export const CtaSection: React.FC = () => {
             whileHover={{ scale: 1.04, y: -2 }}
             whileTap={{ scale: 0.97 }}
             href="#sandbox"
-            className="px-7 py-3.5 rounded-xl font-sans text-sm font-semibold bg-slate-900 dark:bg-white text-white dark:text-slate-950 hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors duration-300 flex items-center gap-2 shadow-lg hover:shadow-cyan-500/20 dark:hover:shadow-cyan-400/20 group"
+            className="px-7 py-3.5  font-sans text-sm font-semibold bg-slate-900 dark:bg-white text-white dark:text-slate-950 hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors duration-300 flex items-center gap-2  group"
           >
             <span>Talk to the founders</span>
             <ArrowUpRight className="w-4 h-4 text-white dark:text-slate-950 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 stroke-[2.5]" />
@@ -74,7 +74,7 @@ export const CtaSection: React.FC = () => {
             whileHover={{ scale: 1.04, y: -2 }}
             whileTap={{ scale: 0.97 }}
             href="/docs"
-            className="px-7 py-3.5 rounded-xl font-sans text-sm font-semibold bg-white/80 dark:bg-slate-900/80 border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-cyan-500/50 dark:hover:border-cyan-500/50 hover:text-slate-900 dark:hover:text-white transition-colors duration-300 shadow-sm"
+            className="px-7 py-3.5  font-sans text-sm font-semibold bg-white/80 dark:bg-slate-900/80 border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-cyan-500/50 dark:hover:border-cyan-500/50 hover:text-slate-900 dark:hover:text-white transition-colors duration-300 "
           >
             <span>Get the audit worksheet</span>
           </motion.a>

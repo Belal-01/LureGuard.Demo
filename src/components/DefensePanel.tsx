@@ -79,9 +79,9 @@ export const DefensePanel: React.FC<DefensePanelProps> = ({
   return (
     <div className="w-full space-y-3 text-left dir-ltr font-sans">
       {/* Block 1: Top Metric Bar (Progressive Threat Score & Velocity) */}
-      <div className="glass-panel p-4 rounded-xl border border-slate-800 bg-cyber-card/80 flex flex-wrap items-center justify-between gap-4 relative overflow-hidden">
+      <div className="glass-panel p-4  border border-slate-800 bg-cyber-card/80 flex flex-wrap items-center justify-between gap-4 relative overflow-hidden">
         <div className="flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-blue-500/10 border border-blue-500/30 text-blue-400">
+          <div className="p-2  bg-blue-500/10 border border-blue-500/30 text-blue-400">
             <ShieldAlert className="w-5 h-5" />
           </div>
           <div>
@@ -99,7 +99,7 @@ export const DefensePanel: React.FC<DefensePanelProps> = ({
           </div>
 
           {/* Dynamic Velocity Badge */}
-          <div className="flex items-baseline gap-1.5 font-mono bg-slate-950/80 px-3 py-1.5 rounded-lg border border-slate-800">
+          <div className="flex items-baseline gap-1.5 font-mono bg-slate-950/80 px-3 py-1.5  border border-slate-800">
             <Activity className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
             <span className="text-xs font-bold text-amber-400 transition-all duration-300">{currentVelocity}</span>
             <span className="text-[10px] text-slate-400">req/s</span>
@@ -122,7 +122,7 @@ export const DefensePanel: React.FC<DefensePanelProps> = ({
       {/* Grid Row: Block 2 & Block 3 */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {/* Block 2: MITRE ATT&CK & ML Feature Matrix (Progressive Extraction) */}
-        <div className="glass-panel p-4 rounded-xl border border-slate-800 bg-cyber-card/60 space-y-3">
+        <div className="glass-panel p-4  border border-slate-800 bg-cyber-card/60 space-y-3">
           <div className="flex items-center justify-between border-b border-slate-800/80 pb-2">
             <span className="text-xs font-mono text-cyan-400 font-bold flex items-center gap-1.5">
               <Cpu className="w-3.5 h-3.5 text-cyan-400" />
@@ -187,7 +187,7 @@ export const DefensePanel: React.FC<DefensePanelProps> = ({
         </div>
 
         {/* Block 3: Attacker GeoIP & Honeypot Trap Routing (Reveals on Stage 1 & Stage 3) */}
-        <div className="glass-panel p-4 rounded-xl border border-slate-800 bg-cyber-card/60 space-y-3">
+        <div className="glass-panel p-4  border border-slate-800 bg-cyber-card/60 space-y-3">
           <div className="flex items-center justify-between border-b border-slate-800/80 pb-2">
             <span className="text-xs font-mono text-cyan-400 font-bold flex items-center gap-1.5">
               <Globe className="w-3.5 h-3.5 text-cyan-400" />
@@ -220,7 +220,7 @@ export const DefensePanel: React.FC<DefensePanelProps> = ({
           </div>
 
           {/* Honeypot Route & Action (Locks in on Stage 3) */}
-          <div className="bg-slate-950/90 p-2.5 rounded-lg border border-slate-800 font-mono text-[11px] space-y-1">
+          <div className="bg-slate-950/90 p-2.5  border border-slate-800 font-mono text-[11px] space-y-1">
             <div className="flex items-center justify-between">
               <span className="text-slate-400 text-[10px]">TARGET HONEYPOT:</span>
               <span className="text-blue-400 font-bold">{simulatedStage >= 3 ? activeScenario.targetHoneypot : 'Pass-Through'}</span>
@@ -234,7 +234,7 @@ export const DefensePanel: React.FC<DefensePanelProps> = ({
       </div>
 
       {/* Block 4: Real-Time Incident Timeline (Step-by-Step Highlight) */}
-      <div className="glass-panel p-4 rounded-xl border border-slate-800 bg-cyber-card/60 space-y-3">
+      <div className="glass-panel p-4  border border-slate-800 bg-cyber-card/60 space-y-3">
         <div className="flex items-center justify-between border-b border-slate-800/80 pb-2">
           <span className="text-xs font-mono text-blue-400 font-bold flex items-center gap-1.5">
             <Activity className="w-3.5 h-3.5 text-blue-400" />
@@ -251,7 +251,7 @@ export const DefensePanel: React.FC<DefensePanelProps> = ({
             return (
               <div
                 key={idx}
-                className={`p-2 rounded-lg border transition-all duration-300 ${
+                className={`p-2  border transition-all duration-300 ${
                   isCurrent
                     ? 'bg-blue-950/80 border-blue-500/60 text-white shadow-[0_0_15px_rgba(59,130,246,0.3)] glow-border-blue'
                     : isCompleted
@@ -310,7 +310,7 @@ export const DefensePanel: React.FC<DefensePanelProps> = ({
 
       {/* Floating Telegram Toast Alert (Appears ONLY on Stage 3 with slide-in left animation) */}
       {telegramToast && telegramToast.visible && (
-        <div className="fixed top-10 right-6 z-50 w-80 sm:w-96 glass-panel p-3.5 rounded-xl border border-blue-500/50 bg-cyber-card/95 backdrop-blur-xl shadow-[0_0_35px_rgba(59,130,246,0.35)] glow-border-blue animate-slide-in-right text-left dir-ltr transition-all duration-300">
+        <div className="fixed top-10 right-6 z-50 w-80 sm:w-96 glass-panel p-3.5  border border-blue-500/50 bg-cyber-card/95 backdrop-blur-xl shadow-[0_0_35px_rgba(59,130,246,0.35)] glow-border-blue animate-slide-in-right text-left dir-ltr transition-all duration-300">
           <div className={`flex items-center justify-between transition-all duration-200 ${isToastExpanded ? 'border-b border-slate-800 pb-2.5 mb-2.5' : 'pb-0 mb-0'}`}>
             <span
               onClick={() => setIsToastExpanded(!isToastExpanded)}
@@ -341,7 +341,7 @@ export const DefensePanel: React.FC<DefensePanelProps> = ({
           </div>
 
           {isToastExpanded && (
-            <div className="bg-slate-950/90 p-3 rounded-lg border border-slate-800 font-mono text-xs text-slate-200 leading-relaxed space-y-1 select-text animate-fadeIn">
+            <div className="bg-slate-950/90 p-3  border border-slate-800 font-mono text-xs text-slate-200 leading-relaxed space-y-1 select-text animate-fadeIn">
               <div className="text-rose-400 font-bold flex items-center justify-between">
                 <span>🚨 LUREGUARD HIGH PRIORITY ALERT</span>
                 <span className="text-[10px] text-slate-500 font-mono">@LureGuardAlertBot</span>

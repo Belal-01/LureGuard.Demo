@@ -83,7 +83,7 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
 
   return (
     <div
-      className={`relative rounded-2xl border border-slate-200 dark:border-[#172033] bg-white/95 dark:bg-[#141419]/95 p-5 sm:p-6 shadow-xl dark:shadow-2xl backdrop-blur-xl divide-y divide-slate-200/80 dark:divide-[#161e31] space-y-0 overflow-hidden tic-card ${className}`}
+      className={`relative  border border-slate-200 dark:border-[#172033] bg-white/95 dark:bg-[#141419]/95 p-5 sm:p-6 backdrop-blur-xl divide-y divide-slate-200/80 dark:divide-[#161e31] space-y-0 overflow-hidden tic-card ${className}`}
     >
       {/* Inline keyframes so the component stays drop-in / no tailwind.config changes needed */}
       <style>{`
@@ -218,7 +218,7 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
               : 'AUTOMATED FIREWALL BLOCK · SIEM SYNC'}
           </p>
         </div>
-        <div className=" px-3 py-1.5 rounded-lg border border-blue-500/30 dark:border-[#2563eb]/50 bg-blue-50 dark:bg-[#1e3a8a]/20 text-blue-600 dark:text-[#60a5fa] font-mono text-xs font-semibold flex items-center gap-2">
+        <div className=" px-3 py-1.5  border border-blue-500/30 dark:border-[#2563eb]/50 bg-blue-50 dark:bg-[#1e3a8a]/20 text-blue-600 dark:text-[#60a5fa] font-mono text-xs font-semibold flex items-center gap-2">
           <Shield className="w-3.5 h-3.5 text-blue-600 dark:text-[#3b82f6]" />
           <span>
             {activeTab === 0
@@ -236,7 +236,7 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
           {/* Row 1: SSH Trap */}
           <div className="tic-row py-3.5 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-xl bg-blue-50 dark:bg-[#1e3a8a]/30 border border-blue-200 dark:border-[#2563eb]/40 text-blue-600 dark:text-[#60a5fa]">
+              <div className="p-2.5  bg-blue-50 dark:bg-[#1e3a8a]/30 border border-blue-200 dark:border-[#2563eb]/40 text-blue-600 dark:text-[#60a5fa]">
                 <Server className="w-4 h-4" />
               </div>
               <div>
@@ -248,7 +248,7 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
                 </span>
               </div>
             </div>
-            <span className="px-3 py-1 rounded-lg border border-blue-500/30 dark:border-[#2563eb]/40 bg-blue-50 dark:bg-[#1e3a8a]/20 text-blue-700 dark:text-[#60a5fa] font-mono text-xs font-semibold">
+            <span className="px-3 py-1  border border-blue-500/30 dark:border-[#2563eb]/40 bg-blue-50 dark:bg-[#1e3a8a]/20 text-blue-700 dark:text-[#60a5fa] font-mono text-xs font-semibold">
               ARMED & READY
             </span>
           </div>
@@ -256,7 +256,7 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
           {/* Row 2: Database Trap */}
           <div className="tic-row py-3.5 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-xl bg-blue-50 dark:bg-[#1e3a8a]/30 border border-blue-200 dark:border-[#2563eb]/40 text-blue-600 dark:text-[#60a5fa]">
+              <div className="p-2.5  bg-blue-50 dark:bg-[#1e3a8a]/30 border border-blue-200 dark:border-[#2563eb]/40 text-blue-600 dark:text-[#60a5fa]">
                 <Database className="w-4 h-4" />
               </div>
               <div>
@@ -268,7 +268,7 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
                 </span>
               </div>
             </div>
-            <span className="px-3 py-1 rounded-lg border border-blue-500/30 dark:border-[#2563eb]/40 bg-blue-50 dark:bg-[#1e3a8a]/20 text-blue-700 dark:text-[#60a5fa] font-mono text-xs font-semibold">
+            <span className="px-3 py-1  border border-blue-500/30 dark:border-[#2563eb]/40 bg-blue-50 dark:bg-[#1e3a8a]/20 text-blue-700 dark:text-[#60a5fa] font-mono text-xs font-semibold">
               ARMED & READY
             </span>
           </div>
@@ -276,7 +276,7 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
           {/* Row 3: Wazuh Log Collector */}
           <div className="tic-row py-3.5 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-xl bg-emerald-50 dark:bg-[#065f46]/30 border border-emerald-200 dark:border-[#10b981]/40 text-emerald-600 dark:text-[#34d399]">
+              <div className="p-2.5  bg-emerald-50 dark:bg-[#065f46]/30 border border-emerald-200 dark:border-[#10b981]/40 text-emerald-600 dark:text-[#34d399]">
                 <Radio className="w-4 h-4" />
               </div>
               <div>
@@ -288,7 +288,7 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
                 </span>
               </div>
             </div>
-            <span className="px-3 py-1 rounded-lg border border-emerald-500/30 dark:border-[#10b981]/40 bg-emerald-50 dark:bg-[#065f46]/20 text-emerald-700 dark:text-[#34d399] font-mono text-xs font-semibold flex items-center gap-1.5">
+            <span className="px-3 py-1  border border-emerald-500/30 dark:border-[#10b981]/40 bg-emerald-50 dark:bg-[#065f46]/20 text-emerald-700 dark:text-[#34d399] font-mono text-xs font-semibold flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#34d399] tic-live-dot" />
               STREAMING
             </span>
@@ -297,7 +297,7 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
           {/* Row 4: IP Whitelist Rule */}
           <div className="tic-row py-3.5 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-xl bg-cyan-50 dark:bg-[#164e63]/30 border border-cyan-200 dark:border-[#06b6d4]/40 text-cyan-600 dark:text-[#22d3ee]">
+              <div className="p-2.5  bg-cyan-50 dark:bg-[#164e63]/30 border border-cyan-200 dark:border-[#06b6d4]/40 text-cyan-600 dark:text-[#22d3ee]">
                 <Shield className="w-4 h-4" />
               </div>
               <div>
@@ -309,7 +309,7 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
                 </span>
               </div>
             </div>
-            <span className="px-3 py-1 rounded-lg border border-cyan-500/30 dark:border-[#06b6d4]/40 bg-cyan-50 dark:bg-[#164e63]/20 text-cyan-700 dark:text-[#22d3ee] font-mono text-xs font-semibold">
+            <span className="px-3 py-1  border border-cyan-500/30 dark:border-[#06b6d4]/40 bg-cyan-50 dark:bg-[#164e63]/20 text-cyan-700 dark:text-[#22d3ee] font-mono text-xs font-semibold">
               ACTIVE
             </span>
           </div>
@@ -322,7 +322,7 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
           {/* Row 1: Fast Path Classifier — now with a live-jittering score */}
           <div className="tic-row-live py-3.5 px-3 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-xl bg-rose-50 dark:bg-[#2b1419]/80 border border-rose-200 dark:border-[#521b24] text-rose-600 dark:text-[#f87171]">
+              <div className="p-2.5  bg-rose-50 dark:bg-[#2b1419]/80 border border-rose-200 dark:border-[#521b24] text-rose-600 dark:text-[#f87171]">
                 <Zap className="w-4 h-4" />
               </div>
               <div>
@@ -353,7 +353,7 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
           {visibleRows >= 2 && (
             <div className="tic-row-live py-3.5 px-3 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-rose-50 dark:bg-[#2b1419]/80 border border-rose-200 dark:border-[#521b24] text-rose-600 dark:text-[#f87171]">
+                <div className="p-2.5  bg-rose-50 dark:bg-[#2b1419]/80 border border-rose-200 dark:border-[#521b24] text-rose-600 dark:text-[#f87171]">
                   <AlertCircle className="w-4 h-4" />
                 </div>
                 <div>
@@ -371,7 +371,7 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
                     NEW
                   </span>
                 )}
-                <span className="px-3 py-1 rounded-lg border border-rose-500/30 dark:border-[#85252e] bg-rose-50 dark:bg-[#3a161d]/80 text-rose-700 dark:text-[#fca5a5] font-mono text-xs font-semibold">
+                <span className="px-3 py-1  border border-rose-500/30 dark:border-[#85252e] bg-rose-50 dark:bg-[#3a161d]/80 text-rose-700 dark:text-[#fca5a5] font-mono text-xs font-semibold">
                   HIGH SEVERITY
                 </span>
               </div>
@@ -382,7 +382,7 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
           {visibleRows >= 3 && (
             <div className="tic-row-live py-3.5 px-3 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-amber-50 dark:bg-[#2a220e]/80 border border-amber-200 dark:border-[#4d3d14] text-amber-600 dark:text-[#fbbf24]">
+                <div className="p-2.5  bg-amber-50 dark:bg-[#2a220e]/80 border border-amber-200 dark:border-[#4d3d14] text-amber-600 dark:text-[#fbbf24]">
                   <AlertCircle className="w-4 h-4" />
                 </div>
                 <div>
@@ -400,7 +400,7 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
                     NEW
                   </span>
                 )}
-                <span className="px-3 py-1 rounded-lg border border-amber-500/30 dark:border-[#4d3d14] bg-amber-50 dark:bg-[#2a220e]/80 text-amber-700 dark:text-[#fbbf24] font-mono text-xs font-semibold">
+                <span className="px-3 py-1  border border-amber-500/30 dark:border-[#4d3d14] bg-amber-50 dark:bg-[#2a220e]/80 text-amber-700 dark:text-[#fbbf24] font-mono text-xs font-semibold">
                   MEDIUM SEVERITY
                 </span>
               </div>
@@ -411,7 +411,7 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
           {visibleRows >= 4 && (
             <div className="tic-row-live py-3.5 px-3 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-amber-50 dark:bg-[#2a220e]/80 border border-amber-200 dark:border-[#4d3d14] text-amber-600 dark:text-[#fbbf24]">
+                <div className="p-2.5  bg-amber-50 dark:bg-[#2a220e]/80 border border-amber-200 dark:border-[#4d3d14] text-amber-600 dark:text-[#fbbf24]">
                   <AlertCircle className="w-4 h-4" />
                 </div>
                 <div>
@@ -429,7 +429,7 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
                     NEW
                   </span>
                 )}
-                <span className="px-3 py-1 rounded-lg border border-amber-500/30 dark:border-[#4d3d14] bg-amber-50 dark:bg-[#2a220e]/80 text-amber-700 dark:text-[#fbbf24] font-mono text-xs font-semibold">
+                <span className="px-3 py-1  border border-amber-500/30 dark:border-[#4d3d14] bg-amber-50 dark:bg-[#2a220e]/80 text-amber-700 dark:text-[#fbbf24] font-mono text-xs font-semibold">
                   DETECTED
                 </span>
               </div>
@@ -444,7 +444,7 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
           {/* Row 1: Firewall IP Block */}
           <div className="tic-row-live py-3.5 px-3 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-xl bg-rose-50 dark:bg-[#2b1419]/80 border border-rose-200 dark:border-[#521b24] text-rose-600 dark:text-[#f87171]">
+              <div className="p-2.5  bg-rose-50 dark:bg-[#2b1419]/80 border border-rose-200 dark:border-[#521b24] text-rose-600 dark:text-[#f87171]">
                 <Lock className="w-4 h-4" />
               </div>
               <div>
@@ -456,7 +456,7 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
                 </span>
               </div>
             </div>
-            <span className="px-3 py-1 rounded-lg border border-rose-500/30 dark:border-[#85252e] bg-rose-50 dark:bg-[#3a161d]/80 text-rose-700 dark:text-[#fca5a5] font-mono text-xs font-semibold flex items-center gap-1.5">
+            <span className="px-3 py-1  border border-rose-500/30 dark:border-[#85252e] bg-rose-50 dark:bg-[#3a161d]/80 text-rose-700 dark:text-[#fca5a5] font-mono text-xs font-semibold flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#f87171] tic-live-dot-red" />
               IP QUARANTINED
             </span>
@@ -466,7 +466,7 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
           {visibleRows >= 2 && (
             <div className="tic-row-live py-3.5 px-3 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-blue-50 dark:bg-[#1e3a8a]/30 border border-blue-200 dark:border-[#2563eb]/40 text-blue-600 dark:text-[#60a5fa]">
+                <div className="p-2.5  bg-blue-50 dark:bg-[#1e3a8a]/30 border border-blue-200 dark:border-[#2563eb]/40 text-blue-600 dark:text-[#60a5fa]">
                   <Radio className="w-4 h-4" />
                 </div>
                 <div>
@@ -484,7 +484,7 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
                     NEW
                   </span>
                 )}
-                <span className="px-3 py-1 rounded-lg border border-blue-500/30 dark:border-[#2563eb]/40 bg-blue-50 dark:bg-[#1e3a8a]/20 text-blue-700 dark:text-[#60a5fa] font-mono text-xs font-semibold">
+                <span className="px-3 py-1  border border-blue-500/30 dark:border-[#2563eb]/40 bg-blue-50 dark:bg-[#1e3a8a]/20 text-blue-700 dark:text-[#60a5fa] font-mono text-xs font-semibold">
                   LOGGED & SENT
                 </span>
               </div>
@@ -495,7 +495,7 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
           {visibleRows >= 3 && (
             <div className="tic-row-live py-3.5 px-3 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-emerald-50 dark:bg-[#065f46]/30 border border-emerald-200 dark:border-[#10b981]/40 text-emerald-600 dark:text-[#34d399]">
+                <div className="p-2.5  bg-emerald-50 dark:bg-[#065f46]/30 border border-emerald-200 dark:border-[#10b981]/40 text-emerald-600 dark:text-[#34d399]">
                   <FileCheck className="w-4 h-4" />
                 </div>
                 <div>
@@ -513,7 +513,7 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
                     NEW
                   </span>
                 )}
-                <span className="px-3 py-1 rounded-lg border border-emerald-500/30 dark:border-[#10b981]/40 bg-emerald-50 dark:bg-[#065f46]/20 text-emerald-700 dark:text-[#34d399] font-mono text-xs font-semibold">
+                <span className="px-3 py-1  border border-emerald-500/30 dark:border-[#10b981]/40 bg-emerald-50 dark:bg-[#065f46]/20 text-emerald-700 dark:text-[#34d399] font-mono text-xs font-semibold">
                   REPORT READY
                 </span>
               </div>
@@ -524,7 +524,7 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
           {visibleRows >= 4 && (
             <div className="tic-row-live py-3.5 px-3 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-emerald-50 dark:bg-[#065f46]/30 border border-emerald-200 dark:border-[#10b981]/40 text-emerald-600 dark:text-[#34d399]">
+                <div className="p-2.5  bg-emerald-50 dark:bg-[#065f46]/30 border border-emerald-200 dark:border-[#10b981]/40 text-emerald-600 dark:text-[#34d399]">
                   <CheckCircle2 className="w-4 h-4" />
                 </div>
                 <div>
@@ -542,7 +542,7 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
                     NEW
                   </span>
                 )}
-                <span className="px-3 py-1 rounded-lg border border-emerald-500/30 dark:border-[#10b981]/40 bg-emerald-50 dark:bg-[#065f46]/20 text-emerald-700 dark:text-[#34d399] font-mono text-xs font-semibold">
+                <span className="px-3 py-1  border border-emerald-500/30 dark:border-[#10b981]/40 bg-emerald-50 dark:bg-[#065f46]/20 text-emerald-700 dark:text-[#34d399] font-mono text-xs font-semibold">
                   RESOLVED
                 </span>
               </div>
