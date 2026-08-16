@@ -73,7 +73,7 @@ export const CtaSection: React.FC = () => {
           <motion.a
             whileHover={{ scale: 1.04, y: -2 }}
             whileTap={{ scale: 0.97 }}
-            href="/docs"
+            href="/guides/01-overview"
             className="px-7 py-3.5  font-sans text-sm font-semibold bg-white/80 dark:bg-slate-900/80 border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:border-cyan-500/50 dark:hover:border-cyan-500/50 hover:text-slate-900 dark:hover:text-white transition-colors duration-300 "
           >
             <span>Get the audit worksheet</span>

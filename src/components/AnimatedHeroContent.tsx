@@ -75,7 +75,7 @@ export const AnimatedHeroContent: React.FC = () => {
         <motion.a
           whileHover={{ scale: 1.03, y: -2 }}
           whileTap={{ scale: 0.97 }}
-          href="/docs"
+          href="/guides/01-overview"
           className="px-8 py-3  font-mono text-sm sm:text-base font-semibold bg-white dark:bg-slate-900/90 text-slate-800 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-700/80 hover:border-cyan-500/50 transition-colors duration-300 flex items-center gap-2.5 shadow-sm"
         >
           <span>READ DOCS</span>
