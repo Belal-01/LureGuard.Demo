@@ -57,6 +57,20 @@ const TABS: TabData[] = [
     cardHeader: 'AUTOMATED CONTAINMENT & REPORT',
     cardBadge: 'CONTAINED & LOGGED',
   },
+  {
+    id: 'reporting',
+    tabLabel: 'INCIDENT DISPATCH & REPORTS',
+    title: 'Automated Forensic PDF Reports & Telegram Alerts',
+    description:
+      'Compile live forensic summary reports and dispatch real-time incident notifications directly to Telegram SOC channels as threat containment executes.',
+    highlights: [
+      'AI Forensic Incident Report Compilation & PDF Export',
+      'Instant High-Priority Telegram SOC Alerts (@LureGuardAlertBot)',
+      'Live Progress Tracking & Delivery Status Verification',
+    ],
+    cardHeader: 'FORENSIC REPORT & DISPATCH',
+    cardBadge: 'AUTOMATED DISPATCH',
+  },
 ];
 
 export const WhatLureGuardDoesSection: React.FC = () => {

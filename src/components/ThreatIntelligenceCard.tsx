@@ -11,6 +11,7 @@ import {
   FileCheck,
 } from 'lucide-react';
 import GlowLight from './GlowLight';
+import { PostIncidentRows } from './PostIncidentRows';
 
 export interface ThreatIntelligenceCardProps {
   activeTab?: number;
@@ -208,14 +209,18 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
               ? 'Active Deception Traps & Agents'
               : activeTab === 1
               ? 'Real-Time Threat Classifier & Telemetry'
-              : 'Containment & Forensic Remediation'}
+              : activeTab === 2
+              ? 'Containment & Forensic Remediation'
+              : 'AI Forensic Report & Telegram Alert Dispatch'}
           </h4>
           <p className="text-[10px] sm:text-[11px] font-mono tracking-[0.12em] text-slate-500 dark:text-[#64748b] uppercase mt-1">
             {activeTab === 0
               ? 'DOCKER TRAPS · WAZUH LOG COLLECTOR'
               : activeTab === 1
               ? 'SLIDING WINDOW W=300s · SUB-150ms'
-              : 'AUTOMATED FIREWALL BLOCK · SIEM SYNC'}
+              : activeTab === 2
+              ? 'AUTOMATED FIREWALL BLOCK · SIEM SYNC'
+              : 'REPORT GENERATION · TELEGRAM SOC BOT'}
           </p>
         </div>
         <div className=" px-3 py-1.5  border border-blue-500/30 dark:border-[#2563eb]/50 bg-blue-50 dark:bg-[#1e3a8a]/20 text-blue-600 dark:text-[#60a5fa] font-mono text-xs font-semibold flex items-center gap-2">
@@ -225,7 +230,9 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
               ? 'ARMED & MONITORING'
               : activeTab === 1
               ? 'ANALYZING TRAFFIC'
-              : 'AUTO-CONTAINED'}
+              : activeTab === 2
+              ? 'AUTO-CONTAINED'
+              : 'DISPATCHING ALERTS'}
           </span>
         </div>
       </div>
@@ -548,6 +555,13 @@ export const ThreatIntelligenceCard: React.FC<ThreatIntelligenceCardProps> = ({
               </div>
             </div>
           )}
+        </div>
+      )}
+
+      {/* Tab 3 Content: Post Incident Rows (AI Report & Telegram Alerts) */}
+      {activeTab === 3 && (
+        <div className="relative z-10 divide-y divide-slate-100 dark:divide-[#141c2e]/70 py-1 min-h-[250px] flex flex-col justify-center">
+          <PostIncidentRows active={activeTab === 3} />
         </div>
       )}
 

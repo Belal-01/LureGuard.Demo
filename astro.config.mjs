@@ -17,6 +17,10 @@ export default defineConfig({
     react(),
     starlight({
       title: 'LureGuard.ai Docs',
+      favicon: '/images/logo.png',
+      logo: {
+        src: './public/images/logo.png',
+      },
       social: [
         { label: 'GitHub', href: 'https://github.com/MajdKhalaf12/LureGuard.ai', icon: 'github' },
       ],

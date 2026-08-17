@@ -1447,7 +1447,7 @@ function OpencodePanel({ active }: { active: boolean }) {
 const TABS = [
   { id: 'opencode', label: 'opencode CLI', icon: MessageSquare },
   { id: 'soc', label: 'SOC Overview', icon: Shield },
-  { id: 'agent', label: 'Agent Activity', icon: Zap },
+  { id: 'agent', label: 'LureGuard Analyst', icon: Zap },
   { id: 'posture', label: 'Security Posture', icon: ShieldCheck },
   { id: 'investigation', label: 'Investigation', icon: Search },
   { id: 'explorer', label: 'Log Explorer', icon: Terminal },
